@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :members do
+    get 'members/index'
+    get 'members/show'
+    get 'members/edit'
+    get 'members/update'
+    get 'members/destroy_page'
+    get 'members/leave'
+  end
   namespace :admins do
     get 'members/show'
     get 'members/edit'
