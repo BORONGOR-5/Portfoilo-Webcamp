@@ -1,6 +1,6 @@
-class CreateEntires < ActiveRecord::Migration[5.2]
+class CreateEntries < ActiveRecord::Migration[5.2]
   def change
-    create_table :entires do |t|
+    create_table :entries do |t|
       t.references :member, foreign_key: true
       t.references :room, foreign_key: true
 
