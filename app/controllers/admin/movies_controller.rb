@@ -1,4 +1,4 @@
-class Admins::MoviesController < ApplicationController
+class Admin::MoviesController < ApplicationController
   def top
   end
 

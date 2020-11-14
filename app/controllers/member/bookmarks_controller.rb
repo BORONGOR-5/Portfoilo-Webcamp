@@ -1,4 +1,4 @@
-class Members::BookmarksController < ApplicationController
+class Member::BookmarksController < ApplicationController
   def index
   end
 

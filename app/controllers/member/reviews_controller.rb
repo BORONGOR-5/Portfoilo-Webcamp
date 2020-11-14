@@ -1,4 +1,4 @@
-class Members::ReviewsController < ApplicationController
+class Member::ReviewsController < ApplicationController
   def member_index
   end
 

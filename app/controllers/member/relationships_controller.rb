@@ -1,4 +1,4 @@
-class Members::RelationshipsController < ApplicationController
+class Member::RelationshipsController < ApplicationController
   def index
   end
 

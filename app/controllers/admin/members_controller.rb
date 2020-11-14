@@ -1,4 +1,4 @@
-class Admins::MembersController < ApplicationController
+class Admin::MembersController < ApplicationController
   def show
   end
 
