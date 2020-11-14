@@ -70,3 +70,6 @@ gem 'refile-mini_magick'
 gem 'kaminari'
 gem 'order_as_specified'
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
