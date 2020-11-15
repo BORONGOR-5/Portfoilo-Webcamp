@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   
   	resources :movies, only: [:index, :show]
   	root 'movies#top'
+  	get 'genres/:id/sort', to: 'movies#sort', as: 'genres_sort'
   
   	resources :comments, only: [:new, :create, :destroy]
   
