@@ -6,9 +6,10 @@ class Member::MembersController < ApplicationController
   end
 
   def show
+    @genres = Genre.where(is_active: true)
     @member = Member.find(params[:id])
-    @reviews = @member.reviews
-    @bookmarks = @member.bookmarks
+    # @reviews = @member.reviews
+    # @bookmarks = @member.bookmarks
     
   end
 

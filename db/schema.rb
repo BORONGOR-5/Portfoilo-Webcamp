@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(version: 2020_11_13_063109) do
     t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_entries_on_member_id"
-    t.index ["room_id"], name: "index_entries_on_room_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -89,8 +87,6 @@ ActiveRecord::Schema.define(version: 2020_11_13_063109) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_messages_on_member_id"
-    t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -113,15 +109,6 @@ ActiveRecord::Schema.define(version: 2020_11_13_063109) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "following_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
-    t.index ["following_id"], name: "index_relationships_on_following_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer "member_id"
     t.integer "movie_id"
@@ -136,7 +123,6 @@ ActiveRecord::Schema.define(version: 2020_11_13_063109) do
     t.integer "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_rooms_on_member_id"
   end
 
 end
