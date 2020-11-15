@@ -1,8 +1,8 @@
 class CreateEntries < ActiveRecord::Migration[5.2]
   def change
     create_table :entries do |t|
-      t.integer :member_id, foreign_key: true
-      t.integer :room_id, foreign_key: true
+      t.integer :member_id
+      t.integer :room_id
 
       t.timestamps
     end
