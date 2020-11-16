@@ -1,8 +1,11 @@
 class Admin::MoviesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def top
   end
 
   def index
+    @movies = Movie.all.page(params[:page]).per(8)
   end
 
   def new
@@ -19,4 +22,9 @@ class Admin::MoviesController < ApplicationController
 
   def update
   end
+  
+  private
+  def movie_params
+    params.require(:movie).permit(:title, :image, :introduction, :genre_id)
+  end 
 end
