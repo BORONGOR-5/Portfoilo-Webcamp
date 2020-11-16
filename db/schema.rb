@@ -109,6 +109,13 @@ ActiveRecord::Schema.define(version: 2020_11_13_063109) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "following_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "member_id"
     t.integer "movie_id"
