@@ -1,2 +1,21 @@
-<h1>Admins::Reviews#edit</h1>
-<p>Find me in app/views/admins/reviews/edit.html.erb</p>
+<h1>Admins<div class="body">
+  <div class="container">
+    <h3>レビュー詳細</h3>
+      <div class="row">
+        <div class="col-xs-12">
+            <div>
+              <p>評価</p>
+            </div>
+            <div>
+              <p>レビュー名<%= @review.title %></p>
+            </div>
+            <div>
+              <p>レビュー内容<%= @review.impression %></p>
+            </div>
+            <div>
+               <%= link_to "削除", admin_review_path(@review), method: :delete, class: "btn btn-primary btn-xs pull-right" %>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

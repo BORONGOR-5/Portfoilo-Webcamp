@@ -1,2 +1,39 @@
-<h1>Admins::Members#edit</h1>
-<p>Find me in app/views/admins/members/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 center-block" style="margin: 20px 0 50px 0">
+      <h3><%= @member.name %>さんの会員情報編集</h3>
+    </div>
+    <div class="col-lg-12 center-block">
+      <%= form_with model:@member, url: admin_member_path, local: true, class: "form-horizontal" do |f| %>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">ユーザーID</label>
+      		<div class="col-sm-10">
+      		  <%= @member.id %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputPassword">氏名</label>
+      		<div class="col-sm-10 form-inline">
+      			<%= f.text_field :name, placeholder: "ユーザー名", class: 'form-control', value: @member.name %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">メール・アドレス</label>
+      		<div class="col-sm-4">
+      		  <%= f.email_field :email, class: 'form-control', value: @member.email %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">会員ステータス</label>
+      		<div class="col-sm-10">
+      		  <%= f.radio_button :is_deleted, :false, checked: true %>有効
+      		  <%= f.radio_button :is_deleted, :true %>退会済み
+      		</div>
+      	</div>
+      	<div class="form-group">
+      	 <%= f.submit "変更を保存する", class: 'btn btn-primary col-xs-3' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

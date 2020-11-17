@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_063109) do
     t.integer "member_id"
     t.integer "movie_id"
     t.string "title"
-    t.text "Impression"
+    t.text "impression"
     t.float "star"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

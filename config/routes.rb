@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   namespace :admin do
   	root to: 'top#top'
   
-  	resources :members, only:[:index, :show, :edit, :update]
+  	resources :members, only:[:index, :edit, :update]
   
   	resources :genres, only: [:index, :create, :edit, :update]
   
-  	resources :movies, only: [:index, :create, :edit, :destroy]
+  	resources :movies
   
   	resources :reviews, only: [:index, :edit, :destroy]
+  	get '/member_reviews/:id', to: 'reviews#index_member', as: 'member_reviews'
   end
   
   scope module: :member do
