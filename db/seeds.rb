@@ -6,19 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-  # Member.create!(
-  # name: 'グリコ太郎',
-  # email: 'aaa@aaa',
-  # password: 'aaaaaa',
-  # is_deleted: false
-  # )
+  Member.create!(
+  name: 'グリコ太郎',
+  email: 'aaa@aaa',
+  password: 'aaaaaa',
+  is_deleted: false
+  )
 
-  # Member.create!(
-  # name: 'ソニー佐々木',
-  # email: 'bbb@bbb',
-  # password: 'bbbbbb',
-  # is_deleted: false
-  # )
+  Member.create!(
+  name: 'ソニー佐々木',
+  email: 'bbb@bbb',
+  password: 'bbbbbb',
+  is_deleted: false
+  )
 
   Admin.create!(
     email: 'admin@admin.com',
@@ -73,3 +73,24 @@
   title: '鋼の錬金術師',
   introduction: '鋼の錬金術師です。',
   )
+  
+  Review.create!(
+    member_id: "2",
+    movie_id: "3",
+    title: "最高",
+    impression: "実に最高だった"
+    )
+    
+    Review.create!(
+    member_id: "2",
+    movie_id: "1",
+    title: "まあまあ",
+    impression: "普通"
+    )
+    
+    Review.create!(
+    member_id: "1",
+    movie_id: "3",
+    title: "うーん",
+    impression: "微妙だった"
+    )
