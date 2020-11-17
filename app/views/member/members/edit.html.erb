@@ -1,2 +1,72 @@
-<h1>Members::Members#edit</h1>
-<p>Find me in app/views/members/members/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 center-block" style="margin: 50px 0 50px 50px">
+      <h4 style="margin: 0 0 20px 200px">プロフィール編集</h4>
+      <div class="form-horizontal">
+        <%= form_with model: @member, url: members_update_path, local: true do |f| %>
+          <div class="form-group">
+          <label class="col-sm-2 control-label" for="InputPassword"></label>
+        		<div class="col-sm-10">
+              <%= f.label :ユーザー名 %>
+              <%= f.text_field :name, autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+          <label class="col-sm-2 control-label" for="InputEmail"></label>
+            <div class="col-xs-3">
+              <%= f.label :メールアドレス %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %><br/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-xs-6">
+              <%= f.label :自己紹介文 %>
+              <%= f.text_area :introduction, autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-xs-6">
+              <%= f.label :性別 %>
+              <%= f.select :sex, Member.sexes.keys, class: 'form-control' %><br/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-xs-3">
+              <%= f.label :生年月日 %>
+              <%= f.date_select :birthday, use_month_numbers: true,start_year: 1920, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), class: 'form-control' %><br/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <%= f.label :ベスト1 %>
+              <%= f.text_field :best1, autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <%= f.label :ベスト2 %>
+              <%= f.text_field :best2, autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <%= f.label :ベスト3 %>
+              <%= f.text_field :best3, autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+          
+          <div class="action-group">
+              <div class="col-lg-12 center-block" style="margin: 20px 20px 20px 280px">
+                <%= f.submit '編集内容を保存する', class: 'btn btn-primary' %>
+                <%= link_to '退会する', destroy_page_path, class: 'btn btn-danger' %>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>  
+</div>

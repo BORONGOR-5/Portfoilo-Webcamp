@@ -1,6 +1,6 @@
 class Member::MembersController < ApplicationController
   def index
-    @members = Member.all
+    @members = Member.where(is_deleted: false)
     @member = current_member
     
   end
@@ -14,15 +14,30 @@ class Member::MembersController < ApplicationController
   end
 
   def edit
+    @member = Member.find(params[:id])
   end
 
   def update
+    @member = current_member
+    if @member.update(member_params)
+      redirect_to member_path(@member)
+    else
+      render :edit
+    end
   end
 
   def destroy_page
+    @member = Member.find(params[:id])
   end
 
   def leave
+    @member = current_member
+    #is_deletedカラムにフラグを立てる(defaultはfalse)
+    @member.update(is_deleted: true)
+    #ログアウトさせる
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
 
   private

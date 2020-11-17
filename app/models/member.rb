@@ -9,9 +9,11 @@ class Member < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
+  enum sex: %i( 男 女 その他 )
+
   validates :name, presence: true
   validates :is_deleted, inclusion: {in: [true, false]}
-
+  # validates :date, presence: true
   
   def active_for_authentication?
     super && (is_deleted == false)

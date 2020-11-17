@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :members
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+}
+  devise_for :members, controllers: {
+  sessions:      'members/sessions',
+  passwords:     'members/passwords',
+  registrations: 'members/registrations'
+}
 
   namespace :admin do
   	root to: 'top#top'
@@ -42,8 +50,9 @@ Rails.application.routes.draw do
   	get '/reviews', to: 'reviews#member_index'
   	
   	resources :members, only: [:index, :show, :edit, :update]
-  	get '/members/:id/destroy_page', to: 'members#destroy_page'
-  	get '/members/:id/leave', to: 'members#leave'
+  	get '/members/:id/destroy_page', to: 'members#destroy_page', as: 'destroy_page'
+    post '/members/:id/leave', to: 'members#leave', as: 'leave'
+  	get '/members/:id', to: 'member#update', as: 'members_update'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

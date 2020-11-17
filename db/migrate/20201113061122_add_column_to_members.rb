@@ -8,6 +8,6 @@ class AddColumnToMembers < ActiveRecord::Migration[5.2]
     add_column :members, :best1, :string
     add_column :members, :best2, :string
     add_column :members, :best3, :string
-    add_column :members, :is_deleted, :boolean
+    add_column :members, :is_deleted, :boolean, default: false, null: false
   end
 end
