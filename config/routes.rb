@@ -45,10 +45,14 @@ Rails.application.routes.draw do
   	get 'genres/:id/sort', to: 'movies#sort', as: 'genres_sort'
   
   	resources :comments, only: [:new, :create, :destroy]
-  
-  	resources :reviews, only: [:show, :create, :edit, :update, :destroy]
-  	get '/reviews', to: 'reviews#member_index'
-  	get 'reviews/new/:id', to: 'reviews#new', as: 'new_review'
+  	
+  # 	get '/reviews', to: 'reviews#member_index'
+  	resources :reviews, only: [:show, :create, :new, :edit, :update, :destroy] do
+  	 collection do
+  	   get 'member_index'
+  	   end
+  	end
+  # 	get 'reviews/new/:id', to: 'reviews#new', as: 'new_review'
   	
   	resources :members, only: [:index, :show, :edit, :update]
   	get '/members/:id/destroy_page', to: 'members#destroy_page', as: 'destroy_page'

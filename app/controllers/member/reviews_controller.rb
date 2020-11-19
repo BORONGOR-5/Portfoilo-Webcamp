@@ -6,9 +6,10 @@ class Member::ReviewsController < ApplicationController
 
   def show
     @genres = Genre.where(is_active: true)
-    @movie = Movie.find(params[:id])
-    @member = Member.find(params[:id])
     @review = Review.find(params[:id])
+    @movie = Movie.find(@review.movie.id)
+    @member = Member.find(@review.member.id)
+    
   end
 
   def new
@@ -18,20 +19,17 @@ class Member::ReviewsController < ApplicationController
   end
 
   def create
-    @movie = Movie.find(params[:movie_id])
     @review = Review.new(review_params)
-    # @review.member_id = current_member.id
-    if @review.save
-      redirect_back(fallback_location: root_path)
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    @review.member_id = current_member.id
+    @review.movie_id = params[:movie_id].to_i
+    @review.save
+    redirect_to movie_path(params[:movie_id].to_i)
   end
 
   def edit
     @genres = Genre.where(is_active: true)
-    @movie = Movie.find(params[:id])
     @review = Review.find(params[:id])
+    @movie = Movie.find(@review.movie.id)
   end
 
   def update
@@ -44,6 +42,9 @@ class Member::ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to root_path
   end
   
   private

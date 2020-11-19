@@ -4,16 +4,16 @@
       <%= render 'layouts/sideber', genres: @genres %>
       <div class="col-xs-10">
         <h3><%= @movie.title %>のレビューを投稿する</h3><br>
-          <div class="row">
-            <div class="col-xs-12 col-xs-offset-1">
-      	      <%= form_with model: @review, url: reviews_path(@movie), local:true do |f| %>
-                <%= render "form", f: f %>
-                <div>
-                  <%= f.submit "レビューを投稿する", class: "btn btn-primary btn-lg pull-right" %>
-                </div>
-              <% end %>
-      	    </div>
-          </div>
+        <div class="row">
+          <div class="col-xs-12 col-xs-offset-1">
+    	      <%= form_with model: @review, url: reviews_path(movie_id: @movie.id), method: :post, local: true do |f| %>
+              <%= render "form", f: f %>
+              <div>
+                <%= f.submit "レビューを投稿する", class: "btn btn-primary btn-lg pull-right" %>
+              </div>
+            <% end %>
+    	    </div>
+        </div>
       </div>
     </div>
   </div>
