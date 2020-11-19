@@ -12,7 +12,7 @@
 		    <p><%= @movie.introduction %></p>
 		  </div>
 		</div>
-	  <p style="margin: 0 0 30px 600px"><%= link_to 'レビューを投稿する', new_review_path, class: "btn btn-info pull-right" %></h3>
+	  <p style="margin: 0 0 30px 600px"><%= link_to 'レビューを投稿する', new_review_path(@movie), class: "btn btn-info pull-right" %></h3>
 	  <!--review一覧-->
 	  <div class="row">
       <div class="col-xs-12">
@@ -30,7 +30,7 @@
                   <% @reviews.each do |review| %>
                     <tr>
                       <td class='text-center'>
-                        <%= link_to review_path(review) do %>
+                        <%= link_to review_path(review.member) do %>
                           <%= review.title %><br>
                         <% end %></td>
                       <td></td>

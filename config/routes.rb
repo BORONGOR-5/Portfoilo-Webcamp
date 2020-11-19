@@ -46,8 +46,9 @@ Rails.application.routes.draw do
   
   	resources :comments, only: [:new, :create, :destroy]
   
-  	resources :reviews, only: [:show, :new, :create, :edit, :update, :destroy]
+  	resources :reviews, only: [:show, :create, :edit, :update, :destroy]
   	get '/reviews', to: 'reviews#member_index'
+  	get 'reviews/new/:id', to: 'reviews#new', as: 'new_review'
   	
   	resources :members, only: [:index, :show, :edit, :update]
   	get '/members/:id/destroy_page', to: 'members#destroy_page', as: 'destroy_page'

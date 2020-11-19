@@ -8,7 +8,8 @@ class Member::MembersController < ApplicationController
   def show
     @genres = Genre.where(is_active: true)
     @member = Member.find(params[:id])
-    # @reviews = @member.reviews
+    # @movie = Movie.find(params[:id])
+    @reviews = @member.reviews
     # @bookmarks = @member.bookmarks
     
   end

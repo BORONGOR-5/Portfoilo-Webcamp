@@ -94,3 +94,10 @@
     title: "うーん",
     impression: "微妙だった"
     )
+    
+    Review.create!(
+    member_id: "2",
+    movie_id: "2",
+    title: "悪くはない",
+    impression: "普通"
+    )

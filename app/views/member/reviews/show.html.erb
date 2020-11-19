@@ -1,2 +1,21 @@
-<h1>Members::Reviews#show</h1>
-<p>Find me in app/views/members/reviews/show.html.erb</p>
+<div class="body">
+  <div class="container-fluid">
+    <div class="row">
+      <%= render 'layouts/sideber', genres: @genres %>
+      <div class="col-xs-10">
+        <h3 class><%= @member.name %>さんのレビュー</h3>
+        <p>評価 <%= @review.title %></p>
+        <p><% @member.name %><% @review.created_at %></p>
+        <p><%= @review.impression %></p>
+        <% if member_signed_in? %>
+          <% if @member == current_member %>
+            <div>
+              <%= link_to '編集する', edit_review_path %>
+              <%= link_to '削除する', review_path, method: :delete %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
