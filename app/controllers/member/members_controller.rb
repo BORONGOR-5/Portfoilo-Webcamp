@@ -1,5 +1,6 @@
 class Member::MembersController < ApplicationController
   def index
+    @genres = Genre.where(is_active: true)
     @members = Member.where(is_deleted: false)
     @member = current_member
     

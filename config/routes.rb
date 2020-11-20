@@ -58,6 +58,8 @@ Rails.application.routes.draw do
   	get '/members/:id/destroy_page', to: 'members#destroy_page', as: 'destroy_page'
     post '/members/:id/leave', to: 'members#leave', as: 'leave'
   	get '/members/:id', to: 'member#update', as: 'members_update'
+  	get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
