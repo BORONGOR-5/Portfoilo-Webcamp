@@ -14,7 +14,7 @@
               <%= link_to @member.followers.count, followers_path(@member.id) %>フォロー
               <%= link_to @member.followings.count, followings_path(@member.id) %>フォロワー<br>
               <%= link_to 'レビュー一覧', edit_member_path %>
-              <%= link_to 'お気に入り一覧', edit_member_path %>
+              <%= link_to 'お気に入り一覧', bookmarks_path %>
               <%= link_to 'コメント一覧', edit_member_path %><br>
             <% else  %>
               <% if current_member.following?(@member) %>

@@ -38,11 +38,15 @@ Rails.application.routes.draw do
   
   	resources :favorites, only: [:create, :destroy]
   
-  	resources :bookmarks, only: [:index, :create, :destroy]
+  	resources :bookmarks, only: [:index]
   
   	resources :movies, only: [:index, :show]
   	root 'movies#top'
   	get 'genres/:id/sort', to: 'movies#sort', as: 'genres_sort'
+  
+    resources :movies, except: [:index] do
+      resource :bookmarks, only: [:create, :destroy]
+    end
   
   	resources :comments, only: [:new, :create, :destroy]
   	
