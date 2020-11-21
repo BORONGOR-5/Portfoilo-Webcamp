@@ -31,6 +31,7 @@
                     <th>レビュータイトル</th>
                     <th>星評価</th>
                     <th>ユーザー名</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,8 +41,11 @@
                         <%= link_to review_path(review) do %>
                           <%= review.title %><br>
                         <% end %></td>
-                      <td></td>
+                      <td>
+                        
+                      </td>
                       <td><%= review.member.name %></td>
+                      <!--<= render 'member/favorites/favorites', review: review %>-->
                     </tr>
                   <% end %>
                 </tbody>

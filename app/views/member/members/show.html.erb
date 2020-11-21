@@ -17,11 +17,7 @@
               <%= link_to 'お気に入り一覧', bookmarks_path %>
               <%= link_to 'コメント一覧', edit_member_path %><br>
             <% else  %>
-              <% if current_member.following?(@member) %>
-                <%= link_to "フォロー外す", relationships_path(@member.id), method: :delete, class: "btn btn-primary" %>
-              <% else %>
-                <%= link_to "フォローする", relationships_path(@member.id), method: :post, class: "btn btn-success" %>
-              <% end %>
+              <%= render "member/relationships/follow-btn", member: @member %>
               <!--<= link_to 'DM機能',  %>-->
               <br>
               <%= link_to @member.followers.count, followers_path(@member.id) %>フォロー

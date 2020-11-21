@@ -1,8 +1,8 @@
+<!--星評価-->
 <div class="field" id="star">
-  <%= f.label :評価, class: "col-xs-3" %>
-  <%= f.hidden_field :star, id: :review_star %>
+  <%= f.label :評価, class: "mr-3" %>
+  <%= f.hidden_field :rate, id: :review_star %>
 </div><br>
-
 <div class="form-group">
     <%= f.label :"投稿タイトル", class: "col-xs-3" %>
     <%= f.text_field :title %>
@@ -11,13 +11,15 @@
     <%= f.label :"投稿内容", class: "col-xs-3" %>
     <%= f.text_area :impression %>
 </div><br>
+
+<!--星評価-->
 <script>
 $('#star').raty({
   size     : 36,
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
   starHalf: '<%= asset_path('star-half.png') %>',
-  scoreName: 'review[star]' 
+  scoreName: 'review[rate]' 
   half: true,
 });
 </script>

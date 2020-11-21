@@ -13,7 +13,6 @@ class Member::MoviesController < ApplicationController
   end
 
   def show
-    # byebug
     @genres = Genre.where(is_active: true)
     @movie = Movie.find(params[:id])
     @reviews = @movie.reviews
