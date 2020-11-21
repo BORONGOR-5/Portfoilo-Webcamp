@@ -39,6 +39,22 @@ class Member < ApplicationRecord
     followings.include?(member)
   end
   
+  #  ↓これだとエラーが出る
+  # def follow(other_member)
+  #   unless self == other_member
+  #     self.relationships.find_or_create_by(following_id: other_member.id)
+  #   end
+  # end
+
+  # def unfollow(other_member)
+  #   relationship = self.relationships.find_by(following_id: other_member.id)
+  #   relationship.destroy if relationship
+  # end
+
+  # def following?(other_member)
+  #   self.followings.include?(other_member)
+  # end 
+  
   def active_for_authentication?
     super && (is_deleted == false)
   end

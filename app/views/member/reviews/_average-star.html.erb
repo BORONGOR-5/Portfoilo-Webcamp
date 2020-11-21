@@ -1,3 +1,5 @@
+
+<!--↓の文はレビューがない作品の星は０にするように記述している-->
 <%= movie.reviews.present? ? movie.reviews.average(:rate).round(1) : 0 %> <span id="star-average" class="ml-3" ></span>
 <script>
   $('#star-average').raty({

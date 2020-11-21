@@ -6,7 +6,7 @@ class Member::RelationshipsController < ApplicationController
   end
   
   def destroy
-    current_member.unfollow(params[:member_id])
+    current_member.unfollow(params[:id])
     redirect_to request.referer
   end
   

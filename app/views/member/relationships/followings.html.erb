@@ -29,7 +29,11 @@
 			  		  <td><%= link_to member_path(member) do %><%= member.name %><% end %></td>
 			  		  <!--<td><= member.following.count %></td>-->
 			  		  <td><%= member.introduction %></td>
-			  		  <td><%= render "member/relationships/follow-btn", member: member %></td>
+			  		  <td>
+						<% if member != current_member %>
+						  <%= render "member/relationships/follow-btn", member: member %>
+    					<% end %>
+					  </td>
 			  		</tr>
 				  <% end %>
 				</tbody>

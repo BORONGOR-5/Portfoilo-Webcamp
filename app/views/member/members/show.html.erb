@@ -26,8 +26,6 @@
               <%= link_to 'お気に入り一覧', edit_member_path %>
               <%= link_to 'コメント一覧', edit_member_path %><br>
             <% end %>
-          <% else %>
-            
           <% end %>
         </div>
         <div class="col-xs-6">
@@ -58,7 +56,7 @@
           <tbody>
             <% @reviews.each do |review| %>
               <tr>
-                <td><%= link_to movie_path(review.movie) do %><%= review.movie.title %><% end %></td>
+                <td><%= link_to movie_path(review.movie), data: {"turbolinks" => false} do %><%= review.movie.title %><% end %></td>
                 <!--showページではなくeditページにとぶ-->
                 <td></td>
                 <td></td>
