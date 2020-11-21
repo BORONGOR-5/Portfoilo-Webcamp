@@ -1,2 +1,57 @@
-<h1>Members::Movies#show</h1>
-<p>Find me in app/views/members/movies/show.html.erb</p>
+<div class="body"> 
+  <div class="container-fluid">
+    <div class="row">
+        <%= render 'layouts/sideber', genres: @genres %>
+      <div class="col-xs-10 col-xs-offset-1">
+    <div class="row">
+		  <div style="float: left; margin: 0px 50px;">
+		    <%= attachment_image_tag @movie, :image, size:'400x250', fallback: "no_image.jpg", size:'400x250' %>
+		  </div>
+		  <div style="width:400px; height:250px; float:left;">
+		    <h2><%= @movie.title %></h2><br>
+		    <p><%= @movie.introduction %></p>
+		  </div>
+		</div>
+		<%= render 'member/reviews/average-star', movie: @movie %>
+		  <% if @movie.bookmarked_by?(current_member) %>
+        <td><%= link_to "ブックマークを外す", movie_bookmarks_path(@movie), method: :delete %></td>
+      <% else %>
+        <td><%= link_to "ブックマーク", movie_bookmarks_path(@movie), method: :post %></td>
+      <% end %>
+		
+	  <p style="margin: 0 0 30px 600px"><%= link_to 'レビューを投稿する', new_review_path(id: @movie.id), class: "btn btn-info pull-right", data: {"turbolinks" => false} %></h3>
+	  <!--review一覧-->
+	  <div class="row">
+      <div class="col-xs-12">
+          <h3>レビュー一覧<span style="font-size:20px;">（全<%= @reviews.count %>件）</span></h3>
+            <div class="box" style="float:left; margin-right:120px;">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th>レビュータイトル</th>
+                    <th>星評価</th>
+                    <th>ユーザー名</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @reviews.each do |review| %>
+                    <tr>
+                      <td class='text-center'>
+                        <%= link_to review_path(review) do %>
+                          <%= review.title %><br>
+                        <% end %></td>
+                      <td>
+                        
+                      </td>
+                      <td><%= review.member.name %></td>
+                      <%= render 'member/favorites/favorites', review: review %>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+	    </div>
+    </div>
+  </div>
+</div>

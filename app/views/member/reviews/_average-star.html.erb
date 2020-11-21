@@ -1,0 +1,14 @@
+
+<!--↓の文はレビューがない作品の星は０にするように記述している-->
+<%= movie.reviews.present? ? movie.reviews.average(:rate).round(1) : 0 %> <span id="star-average" class="ml-3" ></span>
+<script>
+  $('#star-average').raty({
+    size: 36,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= movie.reviews.present? ? movie.reviews.average(:rate).round(1) : 0 %>,
+  });
+</script>

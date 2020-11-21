@@ -1,2 +1,26 @@
-<h1>Members::Movies#index</h1>
-<p>Find me in app/views/members/movies/index.html.erb</p>
+<div class="body">
+  <div class="container-fluid">
+    </br>
+    <div class="row">
+        <%= render 'layouts/sideber', genres: @genres %>
+      <div class="col-xs-10">
+          <h3><div class>作品一覧<span style="font-size:20px;">（全<%= @movies.total_count %>件）</span></h3><br>
+            <div class="row">
+              <div class="col-xs-12 col-xs-offset-1">
+      	      <% @movies.each do |movie| %>
+                <div class="box" style="float:left; margin-right:120px;">
+                  <p class='text-center'><%= movie.title %></p>
+                  <%= link_to movie_path(movie), data: {"turbolinks" => false} do %>
+                    <%= attachment_image_tag movie, :image, size:'200x150', fallback: "no_image.jpg", size:'200x150' %><br>
+                  <% end %>
+                  <p>星評価</p>
+                </div>
+              <% end %>
+      	    </div>
+            <div class="col-xs-6 col-xs-offset-4 ">
+              <%= paginate @movies %>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>

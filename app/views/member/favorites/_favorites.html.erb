@@ -1,0 +1,5 @@
+<% if review.favorited_by?(current_member) %>
+  <td><%= link_to "いいねを外す", review_favorites_path(review), method: :delete %></td>
+<% else %>
+  <td><%= link_to "いいね", review_favorites_path(review), method: :post %></td>
+<% end %>

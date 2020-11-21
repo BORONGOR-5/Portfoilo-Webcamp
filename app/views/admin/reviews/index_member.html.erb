@@ -7,6 +7,7 @@
       <table class='table table-hover table-inverse'>
         <thead>
           <tr bgcolor="#dcdcdc">
+            <th>レビューID</th>
             <th>レビュータイトル</th>
             <th>評価</th>
           </tr>
@@ -14,6 +15,7 @@
         <tbody>
           <% @reviews.each do |review| %>
             <tr>
+              <td><%= review.id %></td>
               <!--showページではなくeditページにとぶ-->
               <td><%= link_to edit_admin_review_path(review) do %><%= review.title %><% end %></td>
               <td></td>

@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_063109) do
     t.string "best1"
     t.string "best2"
     t.string "best3"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
@@ -120,8 +120,8 @@ ActiveRecord::Schema.define(version: 2020_11_13_063109) do
     t.integer "member_id"
     t.integer "movie_id"
     t.string "title"
-    t.text "Impression"
-    t.float "star"
+    t.text "impression"
+    t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
