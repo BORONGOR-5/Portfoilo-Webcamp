@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   	resources :notifications, only: [:index]
   	get '/notifications', to: 'notifications#destroy_all'
   
-  	resources :relationships, only: [:index, :show, :create, :destroy]
+  	resources :relationships, only: [:create, :destroy]
   
   	resources :favorites, only: [:create, :destroy]
   

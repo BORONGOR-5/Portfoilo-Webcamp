@@ -8,7 +8,7 @@ class Review < ApplicationRecord
   validates :impression, presence: true
   # validates :star, presence: true
     
-  def favorited?(member)
+  def favorited_by?(member)
     favorites.where(member_id: member).exists?
   end
 end

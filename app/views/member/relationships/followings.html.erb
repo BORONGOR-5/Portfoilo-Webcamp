@@ -23,13 +23,13 @@
 				  </tr>
 				</thead>
 				<tbody>
-				  <% @member.following.each do |member| %>
+				  <% @members.each do |member| %>
 			  		<tr>
 			  		  <!--<td><= attachment_image_tag member, :profile_image, :fill, 50, 50, fallback: "no_image.jp" %></td>-->
 			  		  <td><%= link_to member_path(member) do %><%= member.name %><% end %></td>
 			  		  <!--<td><= member.following.count %></td>-->
 			  		  <td><%= member.introduction %></td>
-			  		  <%= render "member/relationships/follow-btn", member: member %>
+			  		  <td><%= render "member/relationships/follow-btn", member: member %></td>
 			  		</tr>
 				  <% end %>
 				</tbody>

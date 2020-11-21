@@ -3,10 +3,12 @@
   <%= f.label :評価, class: "mr-3" %>
   <%= f.hidden_field :rate, id: :review_star %>
 </div><br>
+
 <div class="form-group">
     <%= f.label :"投稿タイトル", class: "col-xs-3" %>
     <%= f.text_field :title %>
 </div><br>
+
 <div class="form-group">
     <%= f.label :"投稿内容", class: "col-xs-3" %>
     <%= f.text_area :impression %>
@@ -19,7 +21,7 @@ $('#star').raty({
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
   starHalf: '<%= asset_path('star-half.png') %>',
-  scoreName: 'review[rate]' 
+  scoreName: 'review[rate]',
   half: true,
 });
 </script>

@@ -23,7 +23,7 @@
 				  </tr>
 				</thead>
 				<tbody>
-				  <% @member.follower.each do |member| %>
+				  <% @members.each do |member| %>
 			  		<tr>
 			  		  <!--<td><= attachment_image_tag member, :profile_image, :fill, 50, 50, fallback: "no_image.jp" %></td>-->
 			  		  <td><%= link_to member_path(member) do %><%= member.name %><% end %></td>
