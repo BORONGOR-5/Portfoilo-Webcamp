@@ -2,7 +2,8 @@ class Member::BookmarksController < ApplicationController
   before_action :authenticate_member!
   
   def index
-    @bookmarks = Bookmark.where(member_id: current_member.id)
+    @bookmarks = Bookmark.where(member_id: params[:member_id])
+    
   end
 
   def create

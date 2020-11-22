@@ -15,8 +15,11 @@
             <%= bookmark.movie.title %>
           <% end %>
         </td>
-        <td></td>
-        <td></td>
+        <td>
+          <%= link_to movie_path(bookmark.movie), data: {"turbolinks" => false} do %>
+            <%= attachment_image_tag bookmark.movie, :image, size:'200x150', fallback: "no_image.jpg", size:'200x150' %><br>
+          <% end %></td>
+        <td><%= render 'member/reviews/average-star', movie: bookmark.movie %></td>
       </tr>
     <% end %>
   </tbody>

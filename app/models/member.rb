@@ -20,7 +20,7 @@ class Member < ApplicationRecord
   has_many :followings, through: :relationships, source: :following
   
   
-
+  attachment :profile_image
   enum sex: %i( 男 女 その他 )
 
   validates :name, presence: true

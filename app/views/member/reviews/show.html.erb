@@ -5,16 +5,7 @@
       <div class="col-xs-10">
         <h3 class><%= @member.name %>さんのレビュー</h3>
         <p>
-          <%= @review.rate %><span id="star-rate-<%= @review.id %>" class="ml-3"></span>
-          <script>
-            $('#star-rate-<%= @review.id %>').raty({
-              size: 36,
-              starOff: '<%= asset_path('star-off.png') %>', starOn : '<%= asset_path('star-on.png') %>', starHalf: '<%= asset_path('star-half.png') %>', half: true,
-              readOnly: true,
-              score: <%= @review.rate %>,
-            });
-          </script>
-          
+          <%= render 'member/reviews/star', review: @review %>
           <%= @review.title %>
         </p>
         <p><% @member.name %><% @review.created_at %></p>
