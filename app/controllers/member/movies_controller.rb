@@ -17,4 +17,11 @@ class Member::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @reviews = @movie.reviews
   end
+  
+  def sort
+    @genre = Genre.find(params[:id])
+    @movies = @genre.movies.page(params[:page]).per(8)
+    @genres = Genre.where(is_active: true)
+    render :index
+  end
 end
