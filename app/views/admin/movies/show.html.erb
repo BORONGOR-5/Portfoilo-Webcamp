@@ -1,25 +1,33 @@
 <div class="body">
   <div class="container">
-    <h3>作品詳細</h3>
+    <h2 class="text-center">作品詳細</h2>
+    <br><br>
       <div class="row">
         <div class="col-xs-12">
           <div class="col-xs-4">
             <div>
-	          <%= attachment_image_tag(@movie, :image, size: "300x200", fallback: "no_image.jpg") %>
+	          <%= attachment_image_tag(@movie, :image, size: "300x300", fallback: "no_image.jpg") %>
 	        </div>
           </div>
-          <div class="col-xs-8">
+          <div class="col-xs-4">
             <div>
-              <p><strong>ジャンル：</strong><%= @movie.genre.name %></p>
+              <strong>ジャンル</strong><br>
+              <%= @movie.genre.name %><br><br>
             </div>
             <div>
-              <p><strong>作品名：</strong><%= @movie.title %></p>
+              <strong>評価</strong><br>
+              <%= render 'member/reviews/average-star', movie: @movie %><br><br>
             </div>
             <div>
-              <p><strong>作品説明：</strong><%= @movie.introduction %></p>
+              <strong>作品名</strong><br>
+              <%= @movie.title %><br><br>
             </div>
             <div>
-               <%= link_to "編集", edit_admin_movie_path(@movie), class: "btn btn-primary btn-xs pull-right" %>
+              <strong>作品説明</strong><br>
+              <%= @movie.introduction %><br><br><br>
+            </div>
+            <div>
+               <%= link_to "編集", edit_admin_movie_path(@movie), class: "btn btn-primary btn-md pull-right" %>
             </div>
           </div>
         </div>

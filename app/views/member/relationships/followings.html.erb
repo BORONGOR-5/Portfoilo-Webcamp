@@ -5,33 +5,31 @@
       <%= render "layouts/sideber", genres: @genres %>
       <div class="col-xs-9">
 	  <h2>フォロワー一覧</h2>
-	    <table class="table">
+	  <table class="table">
 		  <thead>
-	        <tr>
+		    <tr>
 		      <!--プロフィール画像-->
-		      <th></th>
-		      <!--ユーザー名-->
-		      <th></th>
-		      <!--投稿レビュー数-->
-		      <th></th>
-			  <!--自己紹介文-->
-	          <th></th>
-		      <!--いいねボタン-->
-		      <th></th>
-		    </tr>
-	 	  </thead>
+			    <th></th>
+				  <th>ユーザー名</th>
+				  <th>自己紹介文</th>
+				  <th>投稿レビュー数</th>
+				  <th></th>
+				</tr>
+			</thead>
 		  <tbody>
 		    <% @members.each do |member| %>
-		      <td><%= attachment_image_tag member, :profile_image, size:'50x50', fallback: "no_image.jpg", size:'50x50' %></td>
-		  		<td><%= link_to member_path(member), data: {"turbolinks" => false} do %><%= member.name %><% end %></td>
-		  		<td><%= member.introduction %></td>
-		  		<td>
-		  		  <% if member != current_member %>
-				    <%= render "member/relationships/follow-btn", member: member %>
-				  <% end %>
-		  		</td>
+		      <tr>
+		        <td><%= attachment_image_tag member, :profile_image, size:'50x50', fallback: "no_image.jpg", size:'50x50' %></td>
+		  		  <td><%= link_to member_path(member), data: {"turbolinks" => false} do %><%= member.name %><% end %></td>
+		  		  <td><%= member.reviews.count %></td>
+		  		  <td><%= member.introduction %></td>
+		  		  <td>
+		  		    <% if member != current_member %>
+				        <%= render "member/relationships/follow-btn", member: member %>
+				      <% end %>
+		  		  </td>
 		  	  </tr>
-			<% end %>
+			  <% end %>
 		  </tbody>
 		</table>
       </div>

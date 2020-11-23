@@ -3,9 +3,10 @@
     </br>
     <div class="row">
       <%= render "layouts/sideber", genres: @genres %>
-      <div class="col-lg-9 row">
-        <div class="col-lg-4">
-          <h2><%= @member.name %>さんのマイページ</h2>
+      <div class="col-lg-8 row">
+        <h2><%= @member.name %>さんのマイページ</h2>
+        <div class="col-lg-5">
+          
           <%= attachment_image_tag @member, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %><br>
           <% if member_signed_in? %>
             <% if @member == current_member %>
@@ -24,14 +25,14 @@
             <% end %>
           <% end %>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
           <h3>プロフィール</h3>
           <p><strong>自己紹介文</strong><br><%= @member.introduction %></p>
           <p><strong>性別</strong><%= @member.sex %>
           <strong>生年月日</strong><%= @member.birthday %></p>
           <p><strong>生涯ベスト１位</strong><%= @member.best1 %></p>
-          <p style="margin: 0 0 20px 80px"><strong>２位</strong><%= @member.best2 %></p>
-          <p style="margin: 0 0 0 80px"><strong>３位</strong><%= @member.best3 %></p> 
+          <p style="margin: 15px 0 20px 70px"><strong>２位</strong><%= @member.best2 %></p>
+          <p style="margin: 0 0 0 70px"><strong>３位</strong><%= @member.best3 %></p> 
         </div>
       </div>
     </div>
@@ -39,13 +40,14 @@
     
     <div class="row">
       <div class="col-lg-2"></div>
-      <div class="col-lg-9 center-block" style="margin: 20px 0 50px 0">
+      <div class="col-lg-9 row" style="margin: 20px 0 50px 0">
         <h3 class><%= @member.name %>さんのレビュー作品</h3>
         <table class='table table-hover table-inverse'>
           <thead>
             <tr bgcolor="#dcdcdc">
               <th>レビュー作品</th>
               <th>レビュータイトル</th>
+              <th>投稿日時</th>
               <th>評価</th>
             </tr>
           </thead>
@@ -62,7 +64,8 @@
                     <%= review.title %>
                   <% end %>
                 </td>
-                <td><%= render 'member/reviews/star', review: review %></td>
+                <td class="col-xs-2"><%= review.created_at.strftime('%Y %m %d %H:%M:%S') %></td>
+                <td class="col-xs-2"><%= render 'member/reviews/star', review: review %></td>
               </tr>
             <% end %>
           </tbody>

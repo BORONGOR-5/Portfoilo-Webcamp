@@ -1,7 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :movie
   belongs_to :member
-  has_many :comment
+  has_many :comment, dependent: :destroy
   has_many :favorites, dependent: :destroy
     
   validates :title, presence: true

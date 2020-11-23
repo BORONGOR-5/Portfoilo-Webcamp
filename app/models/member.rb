@@ -60,6 +60,6 @@ class Member < ApplicationRecord
   end
   
   def self.search(word)
-    self.where(['lname LIKE ?', "%#{word}%"])
+    self.where(['name LIKE ?', "%#{word}%"])
   end
 end

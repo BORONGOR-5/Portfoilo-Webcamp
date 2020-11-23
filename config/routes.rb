@@ -55,12 +55,10 @@ Rails.application.routes.draw do
   	 collection do
   	   get 'member_index'
   	   end
+  	 resource :favorites, only: [:create, :destroy]
+  	 resources :comments, only: [:new, :create, :destroy]
   	end
   # 	get 'reviews/new/:id', to: 'reviews#new', as: 'new_review'
-  
-    resources :reviews, except: [:index] do
-      resource :favorites, only: [:create, :destroy]
-    end
   	
   	resources :members, only: [:index, :show, :edit, :update]
   	get '/members/:id/destroy_page', to: 'members#destroy_page', as: 'destroy_page'

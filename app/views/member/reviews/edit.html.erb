@@ -9,7 +9,7 @@
       	      <%= form_with model: @review, url: review_path, method: :patch, local:true do |f| %>
                 <%= render "form", f: f %>
                 <div>
-                  <%= f.submit "編集内容を保存する",  class: "btn btn-primary btn-lg pull-right" %>
+                  <%= f.submit "編集内容を保存する",  class: "btn btn-primary btn-lg pull-right", data: {"turbolinks" => false} %>
                 </div>
               <% end %>
       	    </div>

@@ -6,14 +6,16 @@
         <h3 class><%= @member.name %>さんのレビュー</h3>
         <p>
           <%= render 'member/reviews/star', review: @review %>
+          <%= @review.created_at.strftime('%Y %m %d %H:%M:%S') %>
+        </p>
+        <p>
           <%= @review.title %>
         </p>
-        <p><% @member.name %><% @review.created_at %></p>
         <p><%= @review.impression %></p>
         <% if member_signed_in? %>
           <% if @member == current_member %>
             <div>
-              <%= link_to '編集する', edit_review_path %>
+              <%= link_to '編集する', edit_review_path, data: {"turbolinks" => false} %>
               <%= link_to '削除する', review_path, method: :delete, "data-confirm" => "本当に削除しますか？" %>
             </div>
           <% else %>
