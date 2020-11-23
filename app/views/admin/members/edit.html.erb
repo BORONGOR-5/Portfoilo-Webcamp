@@ -1,37 +1,42 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 center-block" style="margin: 20px 0 50px 0">
-      <h3><%= @member.name %>さんの会員情報編集</h3>
+    <div class="col-xs-12" style="margin: 20px 0 50px 0">
+      <h2><%= @member.name %>さんの会員情報編集</h2>
     </div>
-    <div class="col-lg-12 center-block">
-      <%= form_with model:@member, url: admin_member_path, local: true, class: "form-horizontal" do |f| %>
+    <div class="col-xs-4">
+      <%= form_with model: @member, url: admin_member_path, local: true, class: "form-horizontal" do |f| %>
+      
       	<div class="form-group">
-      		<label class="col-sm-2 control-label" for="InputEmail">ユーザーID</label>
-      		<div class="col-sm-10">
+      		<label class="col-xs-2 control-label" for="InputEmail"></label>
+      		<div class="col-xs-10">
+      		  <%= f.label :ユーザーID %><br/>
       		  <%= @member.id %>
       		</div>
       	</div>
       	<div class="form-group">
-      		<label class="col-sm-2 control-label" for="InputPassword">氏名</label>
-      		<div class="col-sm-10 form-inline">
-      			<%= f.text_field :name, placeholder: "ユーザー名", class: 'form-control', value: @member.name %>
+      		<label class="col-sm-2 control-label" for="InputEmail"></label>
+      		<div class="col-sm-8 form-inline">
+      		  <%= f.label :ユーザー名 %><br/>
+      			<%= f.text_field :name, autofocus: true, class: 'form-control' %>
       		</div>
       	</div>
       	<div class="form-group">
-      		<label class="col-sm-2 control-label" for="InputEmail">メール・アドレス</label>
-      		<div class="col-sm-4">
-      		  <%= f.email_field :email, class: 'form-control', value: @member.email %>
+      		<label class="col-sm-2 control-label" for="InputEmail"></label>
+      		<div class="col-sm-8">
+      		  <%= f.label :メールアドレス %><br/>
+      		  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
       		</div>
       	</div>
       	<div class="form-group">
-      		<label class="col-sm-2 control-label" for="InputEmail">会員ステータス</label>
-      		<div class="col-sm-10">
+      		<label class="col-sm-2 control-label" for="InputEmail"></label>
+      		<div class="col-sm-6">
+      		  <%= f.label :会員ステータス %><br/>
       		  <%= f.radio_button :is_deleted, :false, checked: true %>有効
       		  <%= f.radio_button :is_deleted, :true %>退会済み
       		</div>
-      	</div>
+      	</div><br>
       	<div class="form-group">
-      	 <%= f.submit "変更を保存する", class: 'btn btn-primary col-xs-3' %>
+      	 <%= f.submit "変更", class: 'btn btn-primary pull-right' %>
         </div>
       <% end %>
     </div>

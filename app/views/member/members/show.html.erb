@@ -3,10 +3,9 @@
     </br>
     <div class="row">
       <%= render "layouts/sideber", genres: @genres %>
-      <div class="col-lg-8 row">
+      <div class="col-md-8 col-md-offset-1 row">
         <h2><%= @member.name %>さんのマイページ</h2>
         <div class="col-lg-5">
-          
           <%= attachment_image_tag @member, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %><br>
           <% if member_signed_in? %>
             <% if @member == current_member %>
@@ -25,7 +24,7 @@
             <% end %>
           <% end %>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-3">
           <h3>プロフィール</h3>
           <p><strong>自己紹介文</strong><br><%= @member.introduction %></p>
           <p><strong>性別</strong><%= @member.sex %>
@@ -39,8 +38,8 @@
     
     
     <div class="row">
-      <div class="col-lg-2"></div>
-      <div class="col-lg-9 row" style="margin: 20px 0 50px 0">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-7 row" style="margin: 20px 0 50px 0">
         <h3 class><%= @member.name %>さんのレビュー作品</h3>
         <table class='table table-hover table-inverse'>
           <thead>
