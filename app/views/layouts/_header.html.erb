@@ -3,7 +3,7 @@
     <nav class='nav navbar-nav navbar-left' >
       <h3 class="default">
         <%= link_to root_path, data: {"turbolinks" => false} do %>
-          <%= image_tag "logo.png", size:'50x50'%>
+          <%= image_tag "logo.png", size:'50x30'%>
         <% end %>
       </h3>
     </nav>
@@ -11,10 +11,10 @@
       <ul class="nav navbar-nav navbar-right">
     <!--memberのheader-->
         <% if member_signed_in? %>
-          <li><%= link_to "マイページ", member_path(current_member), data: {"turbolinks" => false} %></li>
-          <li><%= link_to "映画一覧", movies_path, data: {"turbolinks" => false} %></li>
-          <li><%= link_to "ユーザー一覧", members_path %></li>
-          <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
+          <li><span class="glyphicon glyphicon-cog my-icon" aria-hidden="true"><%= link_to "マイページ", member_path(current_member), data: {"turbolinks" => false} %></span></li>
+          <li><span class="glyphicon glyphicon-cog my-icon" aria-hidden="true"><%= link_to "映画一覧", movies_path, data: {"turbolinks" => false} %></span></li>
+          <li><span class="glyphicon glyphicon-cog my-icon" aria-hidden="true"><%= link_to "ユーザー一覧", members_path %></span></li>
+          <li><span class="glyphicon glyphicon-cog my-icon" aria-hidden="true"><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></span></li>
     <!--adminのheader-->
         <% elsif admin_signed_in?  %>
           <li><%= link_to "ジャンル一覧",admin_genres_path %></li>
