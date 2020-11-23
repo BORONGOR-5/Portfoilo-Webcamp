@@ -38,12 +38,10 @@
                   <% @reviews.each do |review| %>
                     <tr>
                       <td class='text-center'>
-                        <%= link_to review_path(review) do %>
+                        <%= link_to review_path(review), data: {"turbolinks" => false} do %>
                           <%= review.title %><br>
                         <% end %></td>
-                      <td>
-                        
-                      </td>
+                      <td class="col-xs-2"><%= render 'member/reviews/star', review: review %></td>
                       <td><%= review.member.name %></td>
                       <%= render 'member/favorites/favorites', review: review %>
                     </tr>

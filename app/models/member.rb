@@ -20,7 +20,7 @@ class Member < ApplicationRecord
   has_many :followings, through: :relationships, source: :following
   
   
-
+  attachment :profile_image
   enum sex: %i( 男 女 その他 )
 
   validates :name, presence: true
@@ -60,6 +60,6 @@ class Member < ApplicationRecord
   end
   
   def self.search(word)
-    self.where(['lname LIKE ?', "%#{word}%"])
+    self.where(['name LIKE ?', "%#{word}%"])
   end
 end
