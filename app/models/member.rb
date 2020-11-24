@@ -58,8 +58,4 @@ class Member < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
-  def self.search(word)
-    self.where(['name LIKE ?', "%#{word}%"])
-  end
 end

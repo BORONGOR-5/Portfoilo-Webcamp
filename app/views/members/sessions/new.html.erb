@@ -1,32 +1,52 @@
-<h2>ログイン</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <div class="field">
-    <%= f.label :ユーザー名 %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :データを保持する %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログインする" %>
-  </div>
-<% end %>
-
-<%= render "members/shared/links" %>
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <h2 class="text-center">ログイン</h2>
+      
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "members/shared/error_messages", resource: resource %>
+      
+        <div class="sign-in">
+          <div class="form-group text-center">
+            <div class="field">
+              <%= f.label :ユーザー名 %><br />
+              <%= f.text_field :name, autofocus: true %>
+            </div>
+          </div>
+            
+          <div class="form-group text-center">
+            <div class="field">
+              <%= f.label :メールアドレス %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+          </div>
+            
+          <div class="form-group text-center">
+            <div class="field">
+              <%= f.label :パスワード %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+          </div>
+          
+          <div class="form-group text-center">
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :データを保持する %>
+              </div>
+            <% end %>
+          </div>
+          
+          <div class="form-group text-center">
+            <div class="actions">
+              <%= f.submit "ログインする" %>
+            </div> 
+          </div>
+        </div>
+      <% end %>
+      <div class="text-center">
+        <%= link_to "アカウントをお持ちでない方はこちら", new_member_registration_path %>
+      </div>
+   </div>  
+ </div>     
+</div>
