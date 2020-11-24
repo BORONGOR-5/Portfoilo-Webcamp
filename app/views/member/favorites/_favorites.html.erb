@@ -1,5 +1,15 @@
 <% if review.favorited_by?(current_member) %>
-  <td><%= link_to "いいねを外す", review_favorites_path(review), method: :delete %></td>
+  <td>
+    <%= link_to review_favorites_path(review), method: :delete do %>
+      <span class="glyphicon glyphicon-thumbs-up"  style="color: red;"></span>
+      <%= review.favorites.count %>
+    <% end %>
+  </td>
 <% else %>
-  <td><%= link_to "いいね", review_favorites_path(review), method: :post %></td>
+  <td>
+    <%= link_to review_favorites_path(review), method: :post do %>
+      <span class="glyphicon glyphicon-thumbs-up"  style="color: blue;"></span>
+      <%= review.favorites.count %>
+    <% end %>
+  </td>
 <% end %>

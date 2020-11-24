@@ -3,13 +3,13 @@
     <h2 class="text-center">作品詳細</h2>
     <br><br>
       <div class="row">
-        <div class="col-xs-12">
-          <div class="col-xs-4">
+        <div class="col-xs-offset-2 col-xs-10">
+          <div class="col-md-4 col-xs-offseet-1">
             <div>
 	          <%= attachment_image_tag(@movie, :image, size: "300x300", fallback: "no_image.jpg") %>
 	        </div>
           </div>
-          <div class="col-xs-4">
+          <div class="col-md-4">
             <div>
               <strong>ジャンル</strong><br>
               <%= @movie.genre.name %><br><br>
@@ -27,7 +27,7 @@
               <%= @movie.introduction %><br><br><br>
             </div>
             <div>
-               <%= link_to "編集", edit_admin_movie_path(@movie), class: "btn btn-primary btn-md pull-right" %>
+               <%= link_to "編集", edit_admin_movie_path(@movie), data: {"turbolinks" => false}, class: "btn btn-primary btn-md pull-right" %>
             </div>
           </div>
         </div>

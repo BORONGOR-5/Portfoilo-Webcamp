@@ -24,4 +24,10 @@ class Member::MoviesController < ApplicationController
     @genres = Genre.where(is_active: true)
     render :index
   end
+  
+  def search
+   @genres = Genre.where(is_active: true)
+   @movies = Movie.search(params[:word]).page(params[:page]).per(8)
+   render :index
+  end
 end

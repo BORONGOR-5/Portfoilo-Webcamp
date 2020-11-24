@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   	resources :movies, only: [:index, :show]
   	root 'movies#top'
   	get 'genres/:id/sort', to: 'movies#sort', as: 'genres_sort'
+  	get 'search', to: 'movies#search'
   
     resources :movies, except: [:index] do
       resource :bookmarks, only: [:create, :destroy]
@@ -67,5 +68,6 @@ Rails.application.routes.draw do
   	get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
+ 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
