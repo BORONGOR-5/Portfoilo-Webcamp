@@ -11,10 +11,10 @@
       <ul class="nav navbar-nav navbar-right">
     <!--memberのheader-->
         <% if member_signed_in? %>
-          <li><span class="glyphicon glyphicon-cog my-icon" aria-hidden="true"><%= link_to "マイページ", member_path(current_member), data: {"turbolinks" => false} %></span></li>
-          <li><span class="glyphicon glyphicon-cog my-icon" aria-hidden="true"><%= link_to "映画一覧", movies_path, data: {"turbolinks" => false} %></span></li>
-          <li><span class="glyphicon glyphicon-cog my-icon" aria-hidden="true"><%= link_to "ユーザー一覧", members_path %></span></li>
-          <li><span class="glyphicon glyphicon-cog my-icon" aria-hidden="true"><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></span></li>
+          <li><%= link_to "マイページ", member_path(current_member), data: {"turbolinks" => false}, class: "glyphicon glyphicon-cog my-icon" %></li>
+          <li><%= link_to "映画一覧", movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
+          <li><%= link_to "ユーザー一覧", members_path, class: "glyphicon glyphicon-cog my-icon" %></li>
+          <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "glyphicon glyphicon-cog my-icon" %></li>
     <!--adminのheader-->
         <% elsif admin_signed_in?  %>
           <li><%= link_to "ジャンル一覧",admin_genres_path %></li>

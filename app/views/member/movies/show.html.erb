@@ -10,9 +10,17 @@
     		  </div>
     		  <%= render 'member/reviews/average-star', movie: @movie %>
     		  <% if @movie.bookmarked_by?(current_member) %>
-            <td><%= link_to "ブックマークを外す", movie_bookmarks_path(@movie), method: :delete %></td>
+            <td>
+              <%= link_to movie_bookmarks_path(@movie), method: :delete do %>
+                <span class="glyphicon glyphicon-heart" >ブックマークから削除</span>
+              <% end %>
+            </td>
           <% else %>
-            <td><%= link_to "ブックマーク", movie_bookmarks_path(@movie), method: :post %></td>
+            <td>
+              <%= link_to movie_bookmarks_path(@movie), method: :post do %>
+                <span class="glyphicon glyphicon-heart-empty" >ブックマークに追加</span>
+              <% end %>
+            </td>
           <% end %>
     		</div>
     		<div class="col-xs-5">

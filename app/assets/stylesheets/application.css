@@ -18,3 +18,11 @@
   background-color : #A6A6A6;
   color : white;
  }
+ 
+ body {
+  padding-top: 80px; 
+ }
+ 
+  footer {
+  padding-bottom: 280px; 
+ }
