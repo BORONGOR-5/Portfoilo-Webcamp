@@ -1,9 +1,13 @@
 class Member::ReviewsController < ApplicationController
+  before_action :authenticate_member!, only: [:show]
+  
   def show
     @genres = Genre.where(is_active: true)
     @review = Review.find(params[:id])
     @movie = Movie.find(@review.movie.id)
     @member = Member.find(@review.member.id)
+    @comment = Comment.new
+    @comments = @review.comment.all
   end
 
   def new
