@@ -16,6 +16,7 @@ class Admin::MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
+      flash[:notice] = "作品を登録しました。"
       redirect_to admin_movie_path(@movie)
     else
       @genre = Genre.where(is_active: true)
@@ -36,6 +37,7 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @genre = Genre.where(is_active: true)
     if @movie.update(movie_params)
+      flash[:notice] = "作品を編集しました。"
       redirect_to admin_movie_path
     else
       render :edit

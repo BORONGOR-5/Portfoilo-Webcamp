@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      member: "ユーザー"
+      movie: "作品"
+      genre: "ジャンル"
+      review: "レビュー"
+      admin: "管理者"
+    attributes:
+      member:
+        name: "ユーザー名"
+        email: "メースアドレス"
+        reset_password_token: "パスワード"
+        introduction: "自己紹介文"
+        best1: "ベスト１位"
+        best2: "ベスト２位"
+        best3: "ベスト３位"
+      movie:
+        title: "タイトル"
+        introduction: "感想"
+        genre: "ジャンル"
+      genre:
+        name: "ジャンル名"
+        is_active: "有効or無効"
+      review:
+        title: "タイトル"
+        impression: "感想"
+        rate: "星評価"
+      admin:
+        email: "メールアドレス"
+        reset_password_token: "パスワード"

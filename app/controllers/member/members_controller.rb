@@ -18,6 +18,7 @@ class Member::MembersController < ApplicationController
   def update
     @member = current_member
     if @member.update(member_params)
+      flash[:notice] = "ユーザー情報を更新しました。"
       redirect_to member_path(@member)
     else
       render :edit
@@ -34,7 +35,7 @@ class Member::MembersController < ApplicationController
     @member.update(is_deleted: true)
     #ログアウトさせる
     reset_session
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    flash[:notice] = "退会しました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
 

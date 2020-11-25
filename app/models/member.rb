@@ -23,9 +23,12 @@ class Member < ApplicationRecord
   attachment :profile_image
   enum sex: %i( 男 女 その他 )
 
-  validates :name, presence: true
+  validates :name, presence: true, length: {maximum: 20}
   validates :is_deleted, inclusion: {in: [true, false]}
   validates :introduction, length: {maximum: 140}
+  validates :best1, length: {maximum: 30}
+  validates :best2, length: {maximum: 30}
+  validates :best3, length: {maximum: 30}
   
   def follow(member_id)
     relationships.create(following_id: member_id)

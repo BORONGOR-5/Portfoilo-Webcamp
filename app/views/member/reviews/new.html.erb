@@ -1,6 +1,7 @@
 <div class="body">
   <div class="container-fluid">
     <div class="row">
+      <%= render "layouts/errors", obj: @review %>
       <%= render 'layouts/sideber', genres: @genres %>
       <div class="col-xs-10">
         <h3><%= @movie.title %>のレビューを投稿する</h3><br>

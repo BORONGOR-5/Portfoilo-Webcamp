@@ -16,8 +16,14 @@ class Member::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.member_id = current_member.id
     @review.movie_id = params[:movie_id].to_i
-    @review.save
-    redirect_to movie_path(params[:movie_id].to_i)
+    if @review.save
+      flash[:notice] = "レビューを投稿しました。"
+      redirect_to movie_path(params[:movie_id].to_i)
+    else
+      @genres = Genre.where(is_active: true)
+      @movie = Movie.find(@review.movie.id)
+      render :new
+    end
   end
 
   def edit
@@ -29,8 +35,11 @@ class Member::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      flash[:notice] = "レビューを編集しました。"
       redirect_to review_path(@review)
     else
+      @genres = Genre.where(is_active: true)
+      @movie = Movie.find(@review.movie.id)
       render :edit
     end
   end

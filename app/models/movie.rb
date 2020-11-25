@@ -6,9 +6,9 @@ class Movie < ApplicationRecord
   
   attachment :image
   
-  validates :title, presence: true
+  validates :title, presence: true, length: {maximum: 30}
   # validates :image, presence: true
-  validates :introduction, presence: true
+  validates :introduction, presence: true, length: {maximum: 400}
   
   def self.search(word)
     self.where(['title LIKE ?', "%#{word}%"])
