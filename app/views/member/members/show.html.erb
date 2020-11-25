@@ -9,18 +9,18 @@
           <%= attachment_image_tag @member, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %><br>
           <% if member_signed_in? %>
             <% if @member == current_member %>
-              <%= link_to 'プロフィール編集', edit_member_path %>
-              <%= link_to 'パスワード変更', edit_member_registration_path %><br>
-              <%= link_to @member.followers.count, followers_path(member_id: @member.id) %>フォロー
-              <%= link_to @member.followings.count, followings_path(member_id: @member.id) %>フォロワー
+              <%= link_to 'プロフィール編集', edit_member_path, data: {"turbolinks" => false} %>
+              <%= link_to 'パスワード変更', edit_member_registration_path, data: {"turbolinks" => false} %><br>
+              <%= link_to @member.followings.count, followings_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロー
+              <%= link_to @member.followers.count, followers_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロワー
               <%= link_to 'お気に入り一覧', bookmarks_path(member_id: @member.id), data: {"turbolinks" => false} %><br>
             <% else  %>
               <%= render "member/relationships/follow-btn", member: @member %>
               <!--<= link_to 'DM機能',  %>-->
               <br>
-              <%= link_to @member.followers.count, followers_path(member_id: @member.id) %>フォロー
-              <%= link_to @member.followings.count, followings_path(member_id: @member.id) %>フォロワー
-              <%= link_to 'お気に入り一覧', bookmarks_path(member_id: @member.id), data: {"turbolinks" => false} %><br>
+              <%= link_to @member.followings.count, followings_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロー
+              <%= link_to @member.followers.count, followers_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロワー
+              <%= link_to 'お気に入り作品一覧', bookmarks_path(member_id: @member.id), data: {"turbolinks" => false} %><br>
             <% end %>
           <% end %>
         </div>
@@ -29,9 +29,10 @@
           <p><strong>自己紹介文</strong><br><%= @member.introduction %></p>
           <p><strong>性別</strong><%= @member.sex %>
           <strong>生年月日</strong><%= @member.birthday %></p>
-          <p><strong>生涯ベスト１位</strong><%= @member.best1 %></p>
-          <p style="margin: 15px 0 20px 70px"><strong>２位</strong><%= @member.best2 %></p>
-          <p style="margin: 0 0 0 70px"><strong>３位</strong><%= @member.best3 %></p> 
+          <p><strong>生涯ランキング</strong></p>
+          <p><strong>１位</strong><%= @member.best1 %></p>
+          <p><strong>２位</strong><%= @member.best2 %></p>
+          <p><strong>３位</strong><%= @member.best3 %></p> 
         </div>
       </div>
     </div>
@@ -40,7 +41,7 @@
     <div class="row">
       <div class="col-lg-3"></div>
       <div class="col-lg-7 row" style="margin: 20px 0 50px 0">
-        <h3 class><%= @member.name %>さんのレビュー作品</h3>
+        <h3 class><%= @member.name %>さんのレビュー一覧</h3>
         <table class='table table-hover table-inverse'>
           <thead>
             <tr bgcolor="#dcdcdc">
