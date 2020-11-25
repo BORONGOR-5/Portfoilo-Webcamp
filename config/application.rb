@@ -22,5 +22,8 @@ module Portfolio
     #エラーメッセージ日本語化
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
+    
+    #field_with_errorsが出た時に入力フォームの崩れをなくす記述↓
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end

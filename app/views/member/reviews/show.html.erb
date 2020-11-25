@@ -22,6 +22,23 @@
             <%= render 'member/favorites/favorites', review: @review %>
           <% end %>
         <% end %>
+        
+        <% if member_signed_in? %>
+          <%= form_with(model: [@review, @comment], url: comments_path(review_id: @review.id), method: :post, local: true) do |f| %>
+            <%= f.text_area :review_comment, class: "form-control", rows: 5 %>
+            <%= f.submit "コメントする", class: "btn btn-primary btn-lg pull-right" %>
+          <% end %>
+        <% end %>
+        
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><%= comment.review_comment %></td>
+            <td><%= comment.created_at.strftime('%Y %m %d %H:%M:%S') %></td>
+            <td><%= comment.member.name %></td>
+          </tr>
+        <% end %>
+        
+        
       </div>
     </div>
   </div>
