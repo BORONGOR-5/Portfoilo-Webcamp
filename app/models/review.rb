@@ -4,8 +4,8 @@ class Review < ApplicationRecord
   has_many :comment, dependent: :destroy
   has_many :favorites, dependent: :destroy
     
-  validates :title, presence: true
-  validates :impression, presence: true
+  validates :title, presence: true, length: {maximum: 30}
+  validates :impression, presence: true, length: {maximum: 300}
   validates :rate, presence: true
     
   def favorited_by?(member)
