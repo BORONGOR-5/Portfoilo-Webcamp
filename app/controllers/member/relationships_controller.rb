@@ -13,12 +13,12 @@ class Member::RelationshipsController < ApplicationController
   def followings
     @genres = Genre.where(is_active: true)
     member = Member.find(params[:member_id])
-    @members = member.followings
+    @members = member.followings.page(params[:page]).per(10)
   end
 
   def followers
     @genres = Genre.where(is_active: true)
     member = Member.find(params[:member_id])
-    @members = member.followers
+    @members = member.followers.page(params[:page]).per(10)
   end
 end

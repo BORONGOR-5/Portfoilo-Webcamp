@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 center-block" style="margin: 20px 0 50px 0">
-      <h3 class='col-xs-8'>レビュー一覧</h3>
+      <h2 class='col-xs-8'>レビュー一覧</h2>
     </div>
     <div class="col-xs-12 center-block row">
       <table class='table table-hover table-bordered'>
@@ -34,6 +34,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="text-center">
+        <%= paginate @reviews %>
+      </div>
     </div>
   </div>
 </div>

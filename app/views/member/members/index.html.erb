@@ -3,35 +3,44 @@
     </br>
     <div class="row">
       <%= render "layouts/sideber", genres: @genres %>
-      <div class="col-xs-9">
-		<h2>ユーザー一覧</h2>
-		<table class="table">
-	    <thead>
-	        <tr>
-	          <!--プロフィール画像-->
-		      <th></th>
-			  <th>ユーザー名</th>
-			  <th>自己紹介文</th>
-			  <th>投稿レビュー数</th>
-			  <th></th>
-			</tr>
-		</thead>
-		<tbody>
-		  <% @members.each do |member| %>
-	  		<tr>
-	  		  <td><%= attachment_image_tag member, :profile_image, size:'50x50', fallback: "no_image.jpg", size:'50x50' %></td>
-	  		  <td><%= link_to member_path(member), data: {"turbolinks" => false} do %><%= member.name %><% end %></td>
-	  		  <td><%= member.introduction %></td>
-	  		  <td class="text-center"><%= member.reviews.count %>件</td>
-	  		  <td>
-	  		  	<% if member != current_member %>
-				  <%= render "member/relationships/follow-btn", member: member %>
-				<% end %>
-	  		  </td>
-	  		</tr>
-		  <% end %>
-		</tbody>
-		</table>
+      <div class="col-xs-7">
+				<h2 style="padding: 0 0 40px 0">ユーザー一覧</h2>
+				<table class='table table-hover table-inverse'>
+			    <thead>
+			      <tr bgcolor="#CCFFFF">
+				      <!--プロフィール画像-->
+					    <th></th>
+						  <th>ユーザー名</th>
+						  <th>自己紹介文</th>
+						  <th class="text-center">総レビュー数</th>
+						  <th></th>
+						</tr>
+					</thead>
+					<tbody>
+					  <% @members.each do |member| %>
+				  		<tr>
+				  		  <td class="col-xs-1 text-center">
+				  		  	<%= attachment_image_tag member, :profile_image, size:'35x35', fallback: "no_image.jpg", size:'35x35' %>
+				  		  </td>
+				  		  <td class="col-xs-2">
+			  		  		<%= link_to member_path(member), data: {"turbolinks" => false} do %>
+			  		  			<%= member.name %>
+			  		  		<% end %>
+				  		  </td>
+				  		  <td class="col-xs-5"><%= member.introduction %></td>
+				  		  <td class="col-xs-1 text-center"><%= member.reviews.count %>件</td>
+				  		  <td class="col-xs-1 text-center">
+				  		  	<% if member != current_member %>
+									  <%= render "member/relationships/follow-btn", member: member %>
+									<% end %>
+				  		  </td>
+				  		</tr>
+					  <% end %>
+					</tbody>
+				</table>
+				<div class="text-center">
+          <%= paginate @members %>
+        </div>
       </div>
     </div>
   </div>

@@ -1,15 +1,9 @@
 class Member::ReviewsController < ApplicationController
-  def member_index
-    @member = Member.find(params[:id])
-    @reviews = @member.reviews
-  end
-
   def show
     @genres = Genre.where(is_active: true)
     @review = Review.find(params[:id])
     @movie = Movie.find(@review.movie.id)
     @member = Member.find(@review.member.id)
-    
   end
 
   def new

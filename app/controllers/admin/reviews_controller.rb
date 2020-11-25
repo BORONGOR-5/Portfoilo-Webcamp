@@ -1,11 +1,11 @@
 class Admin::ReviewsController < ApplicationController
   def index
-    @reviews = Review.all
+    @reviews = Review.all.page(params[:page]).per(10)
   end
   
   def index_member
     @member = Member.find(params[:id])
-    @reviews = @member.reviews
+    @reviews = @member.reviews.page(params[:page]).per(10)
   end
 
   def edit

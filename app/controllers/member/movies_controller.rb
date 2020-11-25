@@ -9,25 +9,25 @@ class Member::MoviesController < ApplicationController
 
   def index
     @genres = Genre.where(is_active: true)
-    @movies = Movie.all.page(params[:page]).per(8)
+    @movies = Movie.all.page(params[:page]).per(9)
   end
 
   def show
     @genres = Genre.where(is_active: true)
     @movie = Movie.find(params[:id])
-    @reviews = @movie.reviews
+    @reviews = @movie.reviews.page(params[:page]).per(10)
   end
   
   def sort
     @genre = Genre.find(params[:id])
-    @movies = @genre.movies.page(params[:page]).per(8)
+    @movies = @genre.movies.page(params[:page]).per(9)
     @genres = Genre.where(is_active: true)
     render :index
   end
   
   def search
    @genres = Genre.where(is_active: true)
-   @movies = Movie.search(params[:word]).page(params[:page]).per(8)
+   @movies = Movie.search(params[:word]).page(params[:page]).per(9)
    render :index
   end
 end
