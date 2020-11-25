@@ -67,6 +67,7 @@ Rails.application.routes.draw do
   	get '/members/:id', to: 'member#update', as: 'members_update'
   	get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    post '/home/guest_sign_in', to: 'home#new_guest'
   end
  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
