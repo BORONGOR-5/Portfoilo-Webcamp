@@ -25,7 +25,7 @@ class Member < ApplicationRecord
 
   validates :name, presence: true
   validates :is_deleted, inclusion: {in: [true, false]}
-  # validates :date, presence: true
+  validates :introduction, length: {maximum: 140}
   
   def follow(member_id)
     relationships.create(following_id: member_id)

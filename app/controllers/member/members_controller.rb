@@ -1,18 +1,14 @@
 class Member::MembersController < ApplicationController
   def index
     @genres = Genre.where(is_active: true)
-    @members = Member.where(is_deleted: false)
+    @members = Member.where(is_deleted: false).page(params[:page]).per(10)
     @member = current_member
-    
   end
 
   def show
     @genres = Genre.where(is_active: true)
     @member = Member.find(params[:id])
-    # @movie = Movie.find(params[:id])
-    @reviews = @member.reviews
-    # @bookmarks = @member.bookmarks
-    
+    @reviews = @member.reviews.page(params[:page]).per(10)
   end
 
   def edit

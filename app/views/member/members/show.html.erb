@@ -4,27 +4,34 @@
     <div class="row">
       <%= render "layouts/sideber", genres: @genres %>
       <div class="col-md-8 col-md-offset-1 row">
-        <h2><%= @member.name %>さんのマイページ</h2>
+        <h2 style="padding: 0 0 40px 0"><%= @member.name %>さんのマイページ</h2>
         <div class="col-lg-5">
           <%= attachment_image_tag @member, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %><br>
           <% if member_signed_in? %>
             <% if @member == current_member %>
-              <%= link_to 'プロフィール編集', edit_member_path, data: {"turbolinks" => false} %>
-              <%= link_to 'パスワード変更', edit_member_registration_path, data: {"turbolinks" => false} %><br>
-              <%= link_to @member.followings.count, followings_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロー
-              <%= link_to @member.followers.count, followers_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロワー
-              <%= link_to 'お気に入り一覧', bookmarks_path(member_id: @member.id), data: {"turbolinks" => false} %><br>
+              <div style="margin-left: 45px">
+                <%= link_to 'プロフィール編集', edit_member_path, data: {"turbolinks" => false} %>
+                <%= link_to 'パスワード変更', edit_member_registration_path, data: {"turbolinks" => false} %><br>
+              </div>
+              <div style="margin-left: 10px">
+                <%= link_to @member.followings.count, followings_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロー
+                <%= link_to @member.followers.count, followers_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロワー
+                <%= link_to 'お気に入り作品一覧', bookmarks_path(member_id: @member.id), data: {"turbolinks" => false} %><br>
+              </div>
             <% else  %>
-              <%= render "member/relationships/follow-btn", member: @member %>
-              <!--<= link_to 'DM機能',  %>-->
-              <br>
-              <%= link_to @member.followings.count, followings_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロー
-              <%= link_to @member.followers.count, followers_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロワー
-              <%= link_to 'お気に入り作品一覧', bookmarks_path(member_id: @member.id), data: {"turbolinks" => false} %><br>
+              <div style="margin-left: 110px">
+                <%= render "member/relationships/follow-btn", member: @member %>
+                <!--<= link_to 'DM機能',  %>--><br>
+              </div>
+              <div style="margin-left: 10px">
+                <%= link_to @member.followings.count, followings_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロー
+                <%= link_to @member.followers.count, followers_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロワー
+                <%= link_to 'お気に入り作品一覧', bookmarks_path(member_id: @member.id), data: {"turbolinks" => false} %><br>
+              </div>
             <% end %>
           <% end %>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-5" style="margin-left: -80px">
           <h3>プロフィール</h3>
           <p><strong>自己紹介文</strong><br><%= @member.introduction %></p>
           <p><strong>性別</strong><%= @member.sex %>
@@ -37,10 +44,9 @@
       </div>
     </div>
     
-    
     <div class="row">
       <div class="col-lg-3"></div>
-      <div class="col-lg-7 row" style="margin: 20px 0 50px 0">
+      <div class="col-lg-7 row" style="margin: -80px 0 50px 0">
         <h3 class><%= @member.name %>さんのレビュー一覧</h3>
         <table class='table table-hover table-inverse'>
           <thead>
@@ -70,9 +76,10 @@
             <% end %>
           </tbody>
         </table>
+        <div class="text-center">
+          <%= paginate @reviews %>
+        </div>
       </div>
     </div>
-    
-    
   </div>
 </div>

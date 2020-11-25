@@ -1,26 +1,28 @@
-<table>
-  <h2>ブックマーク一覧</h2>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>画像</th>
-      <th>星評価</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <td>
-          <%= link_to movie_path(bookmark.movie) do %>
-            <%= bookmark.movie.title %>
+<div class="body">
+  <div class="container-fluid">
+    </br>
+    <div class="row">
+      <%= render 'layouts/sideber', genres: @genres %>
+      <div class="col-xs-7">
+        <h2 class="col-xs-offset-1">ブックマーク一覧<span style="font-size:20px;">（全<%= @bookmarks.total_count %>件）</span></h2><br>
+        <div class="row">
+          <div class="col-xs-12 col-xs-offset-1">
+  	      <% @bookmarks.each do |bookmark| %>
+            <div class="box" style="float:left; margin:0 120px 30px 0;">
+              <p class='text-center'>
+                <%= link_to movie_path(bookmark.movie), data: {"turbolinks" => false} do %>
+                  <%= attachment_image_tag bookmark.movie, :image, size:'200x150', fallback: "no_image.jpg", size:'200x150' %><br>
+                  <%= bookmark.movie.title %>
+                <% end %>
+              </p>
+              <p class='text-center'><%= render 'member/reviews/average-star', movie: bookmark.movie %></p>
+            </div>
           <% end %>
-        </td>
-        <td>
-          <%= link_to movie_path(bookmark.movie), data: {"turbolinks" => false} do %>
-            <%= attachment_image_tag bookmark.movie, :image, size:'200x150', fallback: "no_image.jpg", size:'200x150' %><br>
-          <% end %></td>
-        <td><%= render 'member/reviews/average-star', movie: bookmark.movie %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  	    </div>
+        <div class="text-center">
+          <%= paginate @bookmarks %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

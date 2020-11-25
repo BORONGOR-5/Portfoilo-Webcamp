@@ -28,11 +28,7 @@
 			  		  		<% end %>
 				  		  </td>
 				  		  <td class="col-xs-5"><%= member.introduction %></td>
-				  		  <td class="col-xs-1 text-center">
-				  		  	<%= link_to member_index_reviews_path(member), data: {"turbolinks" => false} do %>
-				  		  		<%= member.reviews.count %>件
-				  		  	<% end %>
-				  		  </td>
+				  		  <td class="col-xs-1 text-center"><%= member.reviews.count %>件</td>
 				  		  <td class="col-xs-1 text-center">
 				  		  	<% if member != current_member %>
 									  <%= render "member/relationships/follow-btn", member: member %>
@@ -42,6 +38,9 @@
 					  <% end %>
 					</tbody>
 				</table>
+				<div class="text-center">
+          <%= paginate @members %>
+        </div>
       </div>
     </div>
   </div>

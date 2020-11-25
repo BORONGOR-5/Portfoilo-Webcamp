@@ -8,7 +8,7 @@ class Admin::MembersController < ApplicationController
   end
 
   def index
-    @members = Member.all
+    @members = Member.all.page(params[:page]).per(10)
   end
 
   def update

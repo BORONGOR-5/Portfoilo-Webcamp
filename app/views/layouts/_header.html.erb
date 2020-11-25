@@ -18,7 +18,7 @@
           <nav class='nav navbar-nav navbar-right' >
           	<div style="margin-top: 10px">
           	  <%= form_with url:search_path, method: :get, local: true do |f| %>
-          	  <%= f.select :range, '作品':1 %>
+          	  <%= f.hidden_field :range, '作品':1 %>
           	  <%= f.text_field :word, placeholder: "Search" %>
           	  <%= f.submit "検索" %>
           	  <% end %>
@@ -40,7 +40,7 @@
             <li><%= link_to "ログイン", new_member_session_path, class: "glyphicon glyphicon-cog my-icon" %></li>
             <li style="margin-top: 15px">
           	  <%= form_with url:search_path, method: :get, local: true do |f| %>
-            	  <%= f.select :range, '作品':1 %>
+            	  <%= f.hidden_field :range, '作品':1 %>
             	  <%= f.text_field :word, placeholder: "Search" %>
             	  <%= f.submit "検索" %>
           	  <% end %>
