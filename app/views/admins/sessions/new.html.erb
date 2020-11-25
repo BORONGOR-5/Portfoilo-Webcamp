@@ -1,6 +1,7 @@
 <div class="body">
   <div class="container">
     <div class="row">
+      <%= render "layouts/errors", obj: resource %>
       <h2 class="text-center">ログイン</h2>
       
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
