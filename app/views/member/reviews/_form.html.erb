@@ -1,15 +1,15 @@
 <!--星評価-->
-<div class="field" id="star">
-  <%= f.label :評価, class: "mr-3" %>
+<div class="field col-xs-offset-1" id="star">
+  <%= f.label :評価, class: "col-xs-3" %>
   <%= f.hidden_field :rate, id: :review_star %>
 </div><br>
 
-<div class="form-group">
+<div class="form-group col-xs-offset-1">
     <%= f.label :"投稿タイトル", class: "col-xs-3" %>
     <%= f.text_field :title %>
 </div><br>
 
-<div class="form-group">
+<div class="form-group col-xs-offset-1">
     <%= f.label :"投稿内容", class: "col-xs-3" %>
     <%= f.text_area :impression %>
 </div><br>
