@@ -4,26 +4,24 @@
     <div class="row">
       <%= render 'layouts/sideber', genres: @genres %>
       <div class="col-xs-7 col-xs-offset-1 row">
-        <div class="col-xs-5">
+        <div class="col-xs-5" style="padding-top:50px">
     		  <div>
     		    <%= attachment_image_tag @movie, :image, size:'400x250', fallback: "no_image.jpg", size:'400x250' %>
     		  </div>
-    		  <%= render 'member/reviews/average-star', movie: @movie %>
-    		  <% if @movie.bookmarked_by?(current_member) %>
-            <td>
-              <%= link_to movie_bookmarks_path(@movie), method: :delete do %>
-                <span class="glyphicon glyphicon-heart" >ブックマークから削除</span>
-              <% end %>
-            </td>
-          <% else %>
-            <td>
-              <%= link_to movie_bookmarks_path(@movie), method: :post do %>
-                <span class="glyphicon glyphicon-heart-empty" >ブックマークに追加</span>
-              <% end %>
-            </td>
-          <% end %>
+    		  <div class="text-center">
+      		  <%= render 'member/reviews/average-star', movie: @movie %>
+      		  <% if @movie.bookmarked_by?(current_member) %>
+                <%= link_to movie_bookmarks_path(@movie), method: :delete do %>
+                  <span class="glyphicon glyphicon-heart" >ブックマークから削除</span>
+                <% end %>
+            <% else %>
+                <%= link_to movie_bookmarks_path(@movie), method: :post do %>
+                  <span class="glyphicon glyphicon-heart-empty" >ブックマークに追加</span>
+                <% end %>
+            <% end %>
+          </div>
     		</div>
-    		<div class="col-xs-5">
+    		<div class="col-xs-5" style="padding-top:50px">
     		  <div style="width:400px; height:250px; float:left;">
     		    <h2><%= @movie.title %></h2><br>
     		    <p><%= @movie.introduction %></p><br>
@@ -32,38 +30,36 @@
         </div>
 		  </div>
 		</div>
-    <br><br>
-	  <div class="row">
-	    <div class="col-xs-2"></div>
-      <div class="col-xs-7 col-xs-offset-1 row">
+		
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-7 row" style="margin: -200px 0 50px 0">
         <h3>レビュー一覧<span style="font-size:20px;">（全<%= @reviews.total_count %>件）</span></h3>
-        <div class="box" style="float:left; margin-right:120px;">
-          <table class='table table-hover table-inverse'>
-            <thead>
-              <tr bgcolor="#dcdcdc">
-                <th class="col-xs-4">レビュータイトル</th>
-                <th class="col-xs-2 text-center">星評価</th>
-                <th class="col-xs-2 text-center">投稿日時</th>
-                <th class="col-xs-2">ユーザー名</th>
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr bgcolor="#dcdcdc">
+              <th class="col-xs-4">レビュータイトル</th>
+              <th class="col-xs-2 text-center">星評価</th>
+              <th class="col-xs-2 text-center">投稿日時</th>
+              <th class="col-xs-2">ユーザー名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reviews.each do |review| %>
+              <tr>
+                <td class="col-xs-4">
+                  <%= link_to review_path(review), data: {"turbolinks" => false} do %>
+                    <%= review.title %>
+                  <% end %></td>
+                <td class="col-xs-2 text-center"><%= render 'member/reviews/star', review: review %></td>
+                <td class="col-xs-2 text-center"><%= review.created_at.strftime('%Y %m %d %H:%M:%S') %></td>
+                <td class="col-xs-2"><%= link_to member_path(review.member), data: {"turbolinks" => false} do %><%= review.member.name %><% end %></td>
               </tr>
-            </thead>
-            <tbody>
-              <% @reviews.each do |review| %>
-                <tr>
-                  <td>
-                    <%= link_to review_path(review), data: {"turbolinks" => false} do %>
-                      <%= review.title %><br>
-                    <% end %></td>
-                  <td class="col-xs-2 text-center"><%= render 'member/reviews/star', review: review %></td>
-                  <td class="col-xs-2 text-center"><%= review.created_at.strftime('%Y %m %d %H:%M:%S') %></td>
-                  <td><%= link_to member_path(review.member), data: {"turbolinks" => false} do %><%= review.member.name %><% end %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <div class="text-center">
-            <%= paginate @reviews %>
-          </div>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="text-center">
+          <%= paginate @reviews %>
         </div>
 	    </div>
     </div>

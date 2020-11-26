@@ -1,5 +1,6 @@
 <div class="body"> 
   <div class="container-fluid">
+    <br>
     <div class="row">
       <%= render 'layouts/sideber', genres: @genres %>
       <div class="col-xs-9">
@@ -12,7 +13,7 @@
           </h1>
         </div><br><br><br>
       <!--レビュー数が多い作品順-->
-        <h3>人気作品トップ３</h3>
+        <h2>人気作品トップ３</h2>
           <% @rank_movies.each do |rank_movie| %>
             <div class="box" style="float:left; margin-right:120px;">
               <%= link_to movie_path(rank_movie), data: {"turbolinks" => false} do %>

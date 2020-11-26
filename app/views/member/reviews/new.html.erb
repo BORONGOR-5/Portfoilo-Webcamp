@@ -1,16 +1,18 @@
 <div class="body">
   <div class="container-fluid">
+    <br>
     <div class="row">
       <%= render "layouts/errors", obj: @review %>
       <%= render 'layouts/sideber', genres: @genres %>
-      <div class="col-xs-10">
-        <h3><%= @movie.title %>のレビューを投稿する</h3><br>
+      <div class="col-xs-offset-1 col-xs-5 row" style="padding-top: 20px">
+        <h2><%= @movie.title %>のレビューを投稿する</h2>
+        <br>
         <div class="row">
-          <div class="col-xs-12 col-xs-offset-1">
+          <div class="col-xs-12">
     	      <%= form_with model: @review, url: reviews_path(movie_id: @movie.id), method: :post, local: true do |f| %>
               <%= render "form", f: f %>
-              <div>
-                <%= f.submit "レビューを投稿する", class: "btn btn-primary btn-lg pull-right" %>
+              <div style="margin-right: 110px">
+                <%= f.submit "レビューを投稿する",  class: "btn btn-primary btn-md center-block", data: {"turbolinks" => false} %>
               </div>
             <% end %>
     	    </div>

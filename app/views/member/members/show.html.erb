@@ -1,7 +1,6 @@
 <div class="body">
   <div class="container-fluid">
-    <br>
-    <div class="row">
+    <br>    <div class="row">
       <%= render "layouts/sideber", genres: @genres %>
       <div class="col-md-8 col-md-offset-1 row">
         <h2 style="padding: 0 0 40px 0"><%= @member.name %>さんのマイページ</h2>
@@ -51,10 +50,10 @@
         <table class='table table-hover table-inverse'>
           <thead>
             <tr bgcolor="#dcdcdc">
-              <th>レビュー作品</th>
-              <th>レビュータイトル</th>
-              <th>投稿日時</th>
-              <th>評価</th>
+              <th class="col-xs-2">レビュー作品</th>
+              <th class="col-xs-4">レビュータイトル</th>
+              <th class="col-xs-2 text-center">投稿日時</th>
+              <th class="col-xs-2 text-center">評価</th>
             </tr>
           </thead>
           <tbody>
@@ -70,8 +69,8 @@
                     <%= review.title %>
                   <% end %>
                 </td>
-                <td class="col-xs-2"><%= review.created_at.strftime('%Y %m %d %H:%M:%S') %></td>
-                <td class="col-xs-2"><%= render 'member/reviews/star', review: review %></td>
+                <td class="col-xs-2 text-center"><%= review.created_at.strftime('%Y %m %d %H:%M:%S') %></td>
+                <td class="col-xs-2 text-center"><%= render 'member/reviews/star', review: review %></td>
               </tr>
             <% end %>
           </tbody>
