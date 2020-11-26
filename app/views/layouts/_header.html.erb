@@ -11,38 +11,38 @@
       <ul class="nav navbar-nav navbar-right">
     <!--memberのheader-->
         <% if member_signed_in? %>
-          <li><%= link_to "マイページ", member_path(current_member), data: {"turbolinks" => false}, class: "glyphicon glyphicon-cog my-icon" %></li>
+          <li><%= link_to "マイページ", member_path(current_member), data: {"turbolinks" => false}, class: "glyphicon glyphicon-home" %></li>
           <li><%= link_to "映画一覧", movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
-          <li><%= link_to "ユーザー一覧", members_path, class: "glyphicon glyphicon-cog my-icon" %></li>
-          <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "glyphicon glyphicon-cog my-icon" %></li>
+          <li><%= link_to "ユーザー一覧", members_path, class: "glyphicon glyphicon-user" %></li>
+          <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "glyphicon glyphicon-remove-sign" %></li>
           <nav class='nav navbar-nav navbar-right' >
           	<div style="margin-top: 10px">
           	  <%= form_with url:search_path, method: :get, local: true do |f| %>
           	  <%= f.hidden_field :range, '作品':1 %>
-          	  <%= f.text_field :word, placeholder: "Search" %>
+          	  <%= f.text_field :word, placeholder: "作品名" %>
           	  <%= f.submit "検索" %>
           	  <% end %>
           	</div>
           </nav>  
     <!--adminのheader-->
         <% elsif admin_signed_in?  %>
-          <li><%= link_to "ジャンル一覧",admin_genres_path, class: "glyphicon glyphicon-cog my-icon" %></li>
-          <li><%= link_to "映画一覧",admin_movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-cog my-icon" %></li>
-          <li><%= link_to "レビュー一覧",admin_reviews_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-cog my-icon" %></li>
-          <li><%= link_to "ユーザー一覧",admin_members_path, class: "glyphicon glyphicon-cog my-icon" %></li>
-          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-cog my-icon" %></li>
+          <li><%= link_to "ジャンル一覧",admin_genres_path, class: "glyphicon glyphicon-th-large" %></li>
+          <li><%= link_to "映画一覧",admin_movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
+          <li><%= link_to "レビュー一覧",admin_reviews_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-list" %></li>
+          <li><%= link_to "ユーザー一覧",admin_members_path, class: "glyphicon glyphicon-user" %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-remove-sign" %></li>
         <% else %>
     <!--ログイン前のheader-->
           <nav class='nav navbar-nav navbar-right' >
-          	<li><%= link_to "映画一覧", movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-cog my-icon" %></li>
-            <li><%= link_to "ユーザー一覧", members_path, class: "glyphicon glyphicon-cog my-icon" %></li>
-            <li><%= link_to "新規登録", new_member_registration_path, class: "glyphicon glyphicon-cog my-icon" %></li>
-            <li><%= link_to "ログイン", new_member_session_path, class: "glyphicon glyphicon-cog my-icon" %></li>
-            <li><%= link_to 'ゲストログイン（閲覧用）', home_guest_sign_in_path, method: :post, class: "glyphicon glyphicon-cog my-icon" %></li>
+          	<li><%= link_to "映画一覧", movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
+            <li><%= link_to "ユーザー一覧", members_path, class: "glyphicon glyphicon-user" %></li>
+            <li><%= link_to "新規登録", new_member_registration_path, class: "glyphicon glyphicon-ok" %></li>
+            <li><%= link_to "ログイン", new_member_session_path, class: "glyphicon glyphicon-ok-sign" %></li>
+            <li><%= link_to 'ゲストログイン（閲覧用）', home_guest_sign_in_path, method: :post, class: "glyphicon glyphicon-ok-circle" %></li>
             <li style="margin-top: 15px">
           	  <%= form_with url:search_path, method: :get, local: true do |f| %>
             	  <%= f.hidden_field :range, '作品':1 %>
-            	  <%= f.text_field :word, placeholder: "Search" %>
+            	  <%= f.text_field :word, placeholder: "作品名" %>
             	  <%= f.submit "検索" %>
           	  <% end %>
           	</li>
