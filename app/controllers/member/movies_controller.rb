@@ -17,7 +17,7 @@ class Member::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @reviews = @movie.reviews.page(params[:page]).per(10)
   end
-  
+    #サイドバーのジャンル検索
   def sort
     @genre = Genre.find(params[:id])
     @movies = @genre.movies.page(params[:page]).per(9)
@@ -30,4 +30,5 @@ class Member::MoviesController < ApplicationController
    @movies = Movie.search(params[:word]).page(params[:page]).per(9)
    render :index
   end
+
 end

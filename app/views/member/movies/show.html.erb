@@ -5,8 +5,14 @@
       <%= render 'layouts/sideber', genres: @genres %>
       <div class="col-lg-7 col-xs-offset-1 row">
         <div class="col-xs-5" style="padding-top:50px">
+          <!--画面遷移前のリンク-->
+          <%= link_to "トップ", root_path, data: {"turbolinks" => false} %>
+          >
+          <%= link_to "作品一覧", movies_path, data: {"turbolinks" => false} %>
+          >
+          <%= @movie.title %>の詳細
     		  <div>
-    		    <%= attachment_image_tag @movie, :image, size:'400x250', fallback: "no_image.jpg", size:'400x250' %>
+    		    <%= attachment_image_tag @movie, :image, size:'400x300', fallback: "no_image.jpg", size:'400x300' %>
     		  </div>
     		  <div class="text-center">
       		  <%= render 'member/reviews/average-star', movie: @movie %>

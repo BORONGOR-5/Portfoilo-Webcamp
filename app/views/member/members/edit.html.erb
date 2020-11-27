@@ -2,7 +2,17 @@
   <div class="container">
     <div class="row">
       <%= render "layouts/errors", obj: @member %>
-      <h3 class="text-center" style="margin: 50px 0">プロフィール編集</h4>
+      <!--画面遷移前のリンク-->
+      <%= link_to "トップ", root_path, data: {"turbolinks" => false} %>
+      >
+      <%= link_to "ユーザー一覧", members_path, data: {"turbolinks" => false} %>
+      >
+      <%= link_to member_path(@member), data: {"turbolinks" => false} do %>
+        <%= @member.name %>さんの詳細
+      <% end %>
+      >
+      <%= @member.name %>さんのプロフィール編集
+      <h3 class="text-center" style="margin: 50px 0"><%= @member.name %>さんのプロフィール編集</h4>
       <div class="col-xs-12">
         <div class="form-horizontal">
           <%= form_with model: @member, url: members_update_path, local: true do |f| %>

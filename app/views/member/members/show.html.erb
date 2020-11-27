@@ -3,6 +3,12 @@
     <br>    <div class="row">
       <%= render "layouts/sideber", genres: @genres %>
       <div class="col-md-8 col-md-offset-1 row">
+        <!--画面遷移前のリンク-->
+        <%= link_to "トップ", root_path, data: {"turbolinks" => false} %>
+        >
+        <%= link_to "ユーザー一覧", members_path, data: {"turbolinks" => false} %>
+        >
+        <%= @member.name %>さんの詳細
         <h2 style="padding: 0 0 40px 0"><%= @member.name %>さんのマイページ</h2>
         <div class="col-lg-5">
           <%= attachment_image_tag @member, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %><br>
