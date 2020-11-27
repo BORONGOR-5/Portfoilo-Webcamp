@@ -1,5 +1,6 @@
 class Member::FavoritesController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_correct_member
 
   def create
     @review = Review.find(params[:review_id])

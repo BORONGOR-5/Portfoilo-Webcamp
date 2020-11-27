@@ -1,6 +1,5 @@
 class Admin::MembersController < ApplicationController
-  def show
-  end
+  before_action :authenticate_admin!
 
   def edit
     @genre = Genre.where(is_active: true)

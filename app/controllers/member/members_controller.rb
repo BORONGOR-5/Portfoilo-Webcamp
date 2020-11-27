@@ -1,4 +1,9 @@
 class Member::MembersController < ApplicationController
+  #ログイン済ユーザーのみにアクセスを許可する
+  before_action :authenticate_member!, only: [:edit, :destroy_page]
+  # 投稿に紐づいているユーザーと現在ログインしているユーザーが同じ場合のみ下記アクションを許可する
+  before_action :ensure_correct_member, only: [:edit, :update, :destroy_page, :leave]
+  
   def index
     @genres = Genre.where(is_active: true)
     @members = Member.where(is_deleted: false).page(params[:page]).per(10)
@@ -37,6 +42,13 @@ class Member::MembersController < ApplicationController
     reset_session
     flash[:notice] = "退会しました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
+  end
+  
+  def ensure_correct_member
+    if current_member.id != params[:id].to_i
+      flash[:notice] = "権限がありません。"
+      redirect_to root_path
+    end
   end
 
   private

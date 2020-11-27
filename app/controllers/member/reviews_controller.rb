@@ -1,5 +1,8 @@
 class Member::ReviewsController < ApplicationController
-  before_action :authenticate_member!, only: [:show]
+  #ログイン済ユーザーのみにアクセスを許可する
+  before_action :authenticate_member!, only: [:new, :edit]
+  # 投稿に紐づいているユーザーと現在ログインしているユーザーが同じ場合のみ下記アクションを許可する
+  before_action :ensure_correct_member, only: [:edit, :update, :destroy]
   
   def show
     @genres = Genre.where(is_active: true)
@@ -53,6 +56,13 @@ class Member::ReviewsController < ApplicationController
     @review.destroy
     redirect_to root_path
   end
+  
+  def ensure_correct_member
+    if current_member.id != params[:id].to_i
+      flash[:notice] = "権限がありません。"
+      redirect_to root_path
+    end
+  end  
   
   private
   def review_params

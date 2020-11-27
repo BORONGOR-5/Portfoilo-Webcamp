@@ -34,6 +34,12 @@
                 <%= link_to 'お気に入り作品一覧', bookmarks_path(member_id: @member.id), data: {"turbolinks" => false} %><br>
               </div>
             <% end %>
+          <% else %>
+            <div style="margin-left: 10px">
+              <%= link_to @member.followings.count, followings_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロー
+              <%= link_to @member.followers.count, followers_path(member_id: @member.id), data: {"turbolinks" => false} %>フォロワー
+              <%= link_to 'お気に入り作品一覧', bookmarks_path(member_id: @member.id), data: {"turbolinks" => false} %><br>
+            </div>
           <% end %>
         </div>
         <div class="col-lg-5" style="margin-left: -80px">

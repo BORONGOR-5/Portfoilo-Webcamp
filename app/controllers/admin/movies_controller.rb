@@ -1,8 +1,5 @@
 class Admin::MoviesController < ApplicationController
   before_action :authenticate_admin!
-  
-  def top
-  end
 
   def index
     @movies = Movie.all.page(params[:page]).per(10)

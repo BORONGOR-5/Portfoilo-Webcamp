@@ -1,5 +1,5 @@
 class Member::CommentsController < ApplicationController
-  before_action :authenticate_member!, only: [:show]
+  before_action :authenticate_member!
   
   def create
     review = Review.find(params[:review_id])
@@ -10,7 +10,7 @@ class Member::CommentsController < ApplicationController
       redirect_to review_path(review)
     else
       flash[:notice] = "コメントできませんでした"
-      redirect_to root_path
+      redirect_to review_path(review)
     end
   end
 

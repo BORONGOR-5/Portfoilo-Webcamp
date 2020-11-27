@@ -1,5 +1,7 @@
 class Member::RelationshipsController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_member!, only: [:create, :destroy]
+  before_action :ensure_correct_member, only: [:create, :destroy]
+  
   def create
     current_member.follow(params[:member_id])
     redirect_to request.referer
