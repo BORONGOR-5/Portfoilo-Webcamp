@@ -21,7 +21,7 @@
         </h2>
         <p>
           <%= render 'member/reviews/star', review: @review %>
-          <%= @review.created_at.strftime('%Y %m %d %H:%M:%S') %>
+          <%= @review.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
         </p>
         <p><strong><%= @review.title %></strong></p>
         <p><%= @review.impression %></p>

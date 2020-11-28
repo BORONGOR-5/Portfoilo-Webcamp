@@ -1,7 +1,10 @@
 <div class="container">
+    <%= link_to "ユーザー一覧", admin_members_path %>
+    >
+    <%= @member.name %>さんのユーザー情報編集
   <div class="row mx-auto">
     <div class="text-center" style="margin: 20px 0 50px 0">
-      <h2><%= @member.name %>さんの会員情報編集</h2>
+      <h2><%= @member.name %>さんのユーザー情報編集</h2>
     </div>
     <div class="col-xs-offset-3 col-xs-6">
       <%= form_with model: @member, url: admin_member_path, local: true, class: "form-horizontal" do |f| %>
