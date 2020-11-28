@@ -33,11 +33,15 @@ class Member::ReviewsController < ApplicationController
 
   def edit
     @genres = Genre.where(is_active: true)
-    @review = Review.find(params[:id])
-    if @review.member.id == current_member.id
-      @movie = Movie.find(@review.movie.id)
+    if @review = Review.find_by(id: params[:id])
+      if @review.member.id == current_member.id
+        @movie = Movie.find(@review.movie.id)
+      else
+        flash[:notice] = "権限がありません。"
+        redirect_to root_path
+      end
     else
-      flash[:notice] = "権限がありません。"
+      flash[:notice] = "削除されています。"
       redirect_to root_path
     end
   end

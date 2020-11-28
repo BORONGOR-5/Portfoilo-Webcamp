@@ -11,6 +11,7 @@ ja:
         name: "ユーザー名"
         email: "メースアドレス"
         reset_password_token: "パスワード"
+        password: "パスワード"
         current_password: "現在のパスワード"
         introduction: "自己紹介文"
         best1: "ベスト１位"
