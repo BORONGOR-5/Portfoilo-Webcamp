@@ -1,3 +1,5 @@
+![Let's enjoy the movie (3)](https://user-images.githubusercontent.com/69044415/100514349-3d2bf800-31b7-11eb-9027-f127cbde5b5d.png)
+
 # Let's enjoy the movie
 
 ## サイト概要
