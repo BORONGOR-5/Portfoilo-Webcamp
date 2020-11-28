@@ -43,13 +43,6 @@ class Member::MembersController < ApplicationController
     flash[:notice] = "退会しました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
-  
-  def ensure_correct_member
-    if current_member.id != params[:id].to_i
-      flash[:notice] = "権限がありません。"
-      redirect_to root_path
-    end
-  end
 
   private
   def member_params

@@ -16,4 +16,11 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+  
+  def ensure_correct_member
+      if params[:id] != nil && (current_member.id != params[:id].to_i)
+        flash[:notice] = "権限がありません。"
+        redirect_to root_path
+      end
+  end  
 end

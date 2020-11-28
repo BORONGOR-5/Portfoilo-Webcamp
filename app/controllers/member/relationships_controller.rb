@@ -1,6 +1,5 @@
 class Member::RelationshipsController < ApplicationController
   before_action :authenticate_member!, only: [:create, :destroy]
-  before_action :ensure_correct_member, only: [:create, :destroy]
   
   def create
     current_member.follow(params[:member_id])
@@ -14,13 +13,13 @@ class Member::RelationshipsController < ApplicationController
   
   def followings
     @genres = Genre.where(is_active: true)
-    member = Member.find(params[:member_id])
-    @members = member.followings.page(params[:page]).per(10)
+    @member = Member.find(params[:member_id])
+    @members = @member.followings.page(params[:page]).per(10)
   end
 
   def followers
     @genres = Genre.where(is_active: true)
-    member = Member.find(params[:member_id])
-    @members = member.followers.page(params[:page]).per(10)
+    @member = Member.find(params[:member_id])
+    @members = @member.followers.page(params[:page]).per(10)
   end
 end

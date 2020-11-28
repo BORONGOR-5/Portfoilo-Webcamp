@@ -1,6 +1,5 @@
 class Member::BookmarksController < ApplicationController
   before_action :authenticate_member!, only: [:create, :destroy]
-  before_action :ensure_correct_member, only: [:create, :destroy]
   
   def index
     @genres = Genre.where(is_active: true)

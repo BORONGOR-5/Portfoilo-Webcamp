@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   	root 'movies#top'
   	get 'genres/:id/sort', to: 'movies#sort', as: 'genres_sort'
   	get 'search', to: 'movies#search'
+  	get 'search2', to: 'movies#search2'
   
     resources :movies, except: [:index] do
       resource :bookmarks, only: [:create, :destroy]
