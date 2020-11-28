@@ -20,9 +20,26 @@
  }
  
  body {
-  padding-top: 80px;
+  padding-top: 50px;
  }
  
-  footer {
-  padding-bottom: 280px; 
+ footer {
+  padding-bottom: 30px; 
  }
+ 
+ .notice {
+  background-color: #6495ED;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  width: 350px;
+  margin: 0 auto;
+}
+ 
+ #error_explanation {
+  background-color: #ff5e5e;
+  padding: 5px;
+  border-radius: 10px;
+  width: 750px;
+  margin: 0 auto;
+}

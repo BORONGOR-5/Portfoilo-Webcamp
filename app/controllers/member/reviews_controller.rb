@@ -1,5 +1,6 @@
 class Member::ReviewsController < ApplicationController
-  before_action :authenticate_member!, only: [:show]
+  #ログイン済ユーザーのみにアクセスを許可する
+  before_action :authenticate_member!, only: [:new, :edit]
   
   def show
     @genres = Genre.where(is_active: true)
@@ -32,26 +33,45 @@ class Member::ReviewsController < ApplicationController
 
   def edit
     @genres = Genre.where(is_active: true)
-    @review = Review.find(params[:id])
-    @movie = Movie.find(@review.movie.id)
+    if @review = Review.find_by(id: params[:id])
+      if @review.member.id == current_member.id
+        @movie = Movie.find(@review.movie.id)
+      else
+        flash[:notice] = "権限がありません。"
+        redirect_to root_path
+      end
+    else
+      flash[:notice] = "削除されています。"
+      redirect_to root_path
+    end
   end
 
   def update
     @review = Review.find(params[:id])
-    if @review.update(review_params)
-      flash[:notice] = "レビューを編集しました。"
-      redirect_to review_path(@review)
+    if @review.member.id == current_member.id
+      if @review.update(review_params)
+        flash[:notice] = "レビューを編集しました。"
+        redirect_to review_path(@review)
+      else
+        @genres = Genre.where(is_active: true)
+        @movie = Movie.find(@review.movie.id)
+        render :edit
+      end
     else
-      @genres = Genre.where(is_active: true)
-      @movie = Movie.find(@review.movie.id)
-      render :edit
+      flash[:notice] = "権限がありません。"
+      redirect_to root_path
     end
   end
 
   def destroy
     @review = Review.find(params[:id])
-    @review.destroy
-    redirect_to root_path
+    if @review.member.id == current_member.id
+      @review.destroy
+      redirect_to root_path
+    else
+      flash[:notice] = "権限がありません。"
+      redirect_to root_path
+    end
   end
   
   private

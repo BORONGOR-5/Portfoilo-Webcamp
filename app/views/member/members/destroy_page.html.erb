@@ -1,4 +1,18 @@
 <div class="text-center" style="margin: 180px 0 50px 0">
+  <!--画面遷移前のリンク-->
+  <%= link_to "トップ", root_path, data: {"turbolinks" => false} %>
+  >
+  <%= link_to "ユーザー一覧", members_path, data: {"turbolinks" => false} %>
+  >
+  <%= link_to member_path(@member), data: {"turbolinks" => false} do %>
+    <%= @member.name %>さんの詳細
+  <% end %>
+  >
+  <%= link_to edit_member_path(@member), data: {"turbolinks" => false} do %>
+    <%= @member.name %>さんの編集
+  <% end %>
+  >
+  <%= @member.name %>さんの退会確認
   <h2>本当に退会しますか？</h2>
   <p style="margin: 50px 0 50px 0">
         退会すると、ユーザー登録情報の閲覧や、レビューの編集ができなくなります。<br/>

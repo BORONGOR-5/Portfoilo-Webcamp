@@ -1,36 +1,37 @@
 <div class="body">
   <div class="container">
+    <%= link_to "作品一覧", admin_movies_path %>
+    >
+    <%= @movie.title %>の詳細
     <h2 class="text-center">作品詳細</h2>
     <br><br>
-      <div class="row">
-        <div class="col-xs-offset-2 col-xs-10">
-          <div class="col-md-4 col-xs-offseet-1">
-            <div>
-	          <%= attachment_image_tag(@movie, :image, size: "300x300", fallback: "no_image.jpg") %>
-	        </div>
-          </div>
-          <div class="col-md-4">
-            <div>
-              <strong>ジャンル</strong><br>
-              <%= @movie.genre.name %><br><br>
-            </div>
-            <div>
-              <strong>評価</strong><br>
-              <%= render 'member/reviews/average-star', movie: @movie %><br><br>
-            </div>
-            <div>
-              <strong>作品名</strong><br>
-              <%= @movie.title %><br><br>
-            </div>
-            <div>
-              <strong>作品説明</strong><br>
-              <%= @movie.introduction %><br><br><br>
-            </div>
-            <div>
-               <%= link_to "編集", edit_admin_movie_path(@movie), data: {"turbolinks" => false}, class: "btn btn-primary btn-md pull-right" %>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div>
+          <%= attachment_image_tag(@movie, :image, size: "450x300", fallback: "no_image.jpg") %>
         </div>
       </div>
+      <div class="col-xs-offset-1 col-md-6" style=" float:right;">
+        <div>
+          <strong>ジャンル</strong><br>
+          <%= @movie.genre.name %><br><br>
+        </div>
+        <div>
+          <strong>評価</strong><br>
+          <%= render 'member/reviews/average-star', movie: @movie %><br><br>
+        </div>
+        <div>
+          <strong>作品名</strong><br>
+          <%= @movie.title %><br><br>
+        </div>
+        <div>
+          <strong>作品説明</strong><br>
+          <%= @movie.introduction %><br><br><br>
+        </div>
+        <div>
+           <%= link_to "編集", edit_admin_movie_path(@movie), data: {"turbolinks" => false}, class: "btn btn-primary btn-md pull-right" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

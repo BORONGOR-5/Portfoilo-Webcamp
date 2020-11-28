@@ -1,4 +1,9 @@
 class Member::MembersController < ApplicationController
+  #ログイン済ユーザーのみにアクセスを許可する
+  before_action :authenticate_member!, only: [:edit, :destroy_page]
+  # 投稿に紐づいているユーザーと現在ログインしているユーザーが同じ場合のみ下記アクションを許可する
+  before_action :ensure_correct_member, only: [:edit, :update, :destroy_page, :leave]
+  
   def index
     @genres = Genre.where(is_active: true)
     @members = Member.where(is_deleted: false).page(params[:page]).per(10)

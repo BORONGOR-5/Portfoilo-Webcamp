@@ -2,7 +2,17 @@
   <div class="container center-block">
     <div class="row">
       <%= render "layouts/errors", obj: resource %>
-      <h2 class="text-center">ユーザーのパスワード変更</h2>
+            <!--画面遷移前のリンク-->
+      <%= link_to "トップ", root_path, data: {"turbolinks" => false} %>
+      >
+      <%= link_to "ユーザー一覧", members_path, data: {"turbolinks" => false} %>
+      >
+      <%= link_to member_path(@member), data: {"turbolinks" => false} do %>
+        <%= @member.name %>さんの詳細
+      <% end %>
+      >
+      <%= @member.name %>さんのパスワード変更
+      <h2 class="text-center"><%= @member.name %>さんのパスワード変更</h2>
       
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <div class="sign-in">

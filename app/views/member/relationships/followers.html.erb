@@ -4,6 +4,16 @@
     <div class="row">
       <%= render "layouts/sideber", genres: @genres %>
       <div class="col-xs-7">
+      <!--画面遷移前のリンク-->
+      <%= link_to "トップ", root_path, data: {"turbolinks" => false} %>
+      >
+      <%= link_to "ユーザー一覧", members_path, data: {"turbolinks" => false} %>
+      >
+      <%= link_to member_path(@member), data: {"turbolinks" => false} do %>
+        <%= @member.name %>さんの詳細
+      <% end %>
+      >
+      <%= @member.name %>さんのフォロワー一覧
 				<h2 style="padding: 0 0 40px 0">フォロワー一覧</h2>
 				<table class='table table-hover table-inverse'>
 			    <thead>
