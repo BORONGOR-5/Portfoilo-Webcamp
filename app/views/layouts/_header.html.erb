@@ -12,7 +12,7 @@
     <!--memberのheader-->
         <% if member_signed_in? %>
           <li><%= link_to "マイページ", member_path(current_member), data: {"turbolinks" => false}, class: "glyphicon glyphicon-home" %></li>
-          <li><%= link_to "映画一覧", movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
+          <li><%= link_to "作品一覧", movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
           <li><%= link_to "ユーザー一覧", members_path, class: "glyphicon glyphicon-user" %></li>
           <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "glyphicon glyphicon-remove-sign" %></li>
           <nav class='nav navbar-nav navbar-right' >
@@ -27,14 +27,14 @@
     <!--adminのheader-->
         <% elsif admin_signed_in?  %>
           <li><%= link_to "ジャンル一覧",admin_genres_path, class: "glyphicon glyphicon-th-large" %></li>
-          <li><%= link_to "映画一覧",admin_movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
+          <li><%= link_to "作品一覧",admin_movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
           <li><%= link_to "レビュー一覧",admin_reviews_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-list" %></li>
           <li><%= link_to "ユーザー一覧",admin_members_path, class: "glyphicon glyphicon-user" %></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-remove-sign" %></li>
         <% else %>
     <!--ログイン前のheader-->
           <nav class='nav navbar-nav navbar-right' >
-          	<li><%= link_to "映画一覧", movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
+          	<li><%= link_to "作品一覧", movies_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-film" %></li>
             <li><%= link_to "ユーザー一覧", members_path, class: "glyphicon glyphicon-user" %></li>
             <li><%= link_to "新規登録", new_member_registration_path, class: "glyphicon glyphicon-ok" %></li>
             <li><%= link_to "ログイン", new_member_session_path, class: "glyphicon glyphicon-ok-sign" %></li>
