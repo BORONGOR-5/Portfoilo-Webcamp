@@ -24,7 +24,17 @@
           <%= @review.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
         </p>
         <p><strong><%= @review.title %></strong></p>
-        <p><%= @review.impression %></p>
+        <!--レビュー内容のスコアが-0.6~-1の場合は詳細を折りたたみ仕様-->
+        <p>
+          <% if @review.score > -0.5 then %>
+              <%= @review.impression %>
+          <% else %>
+            <details>
+              <summary style="color: red">詳細を開く(不適切な表現が含まれている可能性があります。)</summary>
+              <%= @review.impression %>
+            </details>
+          <% end %>
+        </p>
         <!--レビューの編集と削除orいいね-->
         <% if member_signed_in? %>
           <% if @member == current_member %>

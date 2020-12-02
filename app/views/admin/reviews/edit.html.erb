@@ -21,6 +21,11 @@
               <strong>レビュー内容</strong><br>
               <%= @review.impression %><br><br><br>
             </div>
+            <!--Google Natural Language APIを使用-->
+            <div>
+              <strong>本文の感情分析スコア</strong><br>
+              <%= @review.score %><br><br><br>
+            </div>
             <div>
                <%= link_to "削除", admin_review_path(@review), method: :delete, class: "btn btn-primary btn-nd pull-right" %>
             </div>
