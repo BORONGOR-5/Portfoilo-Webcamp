@@ -21,6 +21,8 @@ class Member::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.member_id = current_member.id
     @review.movie_id = params[:movie_id].to_i
+    # Google Natural Language APIを使用
+    @review.score = Language.get_data(review_params[:impression])
     if @review.save
       flash[:notice] = "レビューを投稿しました。"
       redirect_to movie_path(params[:movie_id].to_i)
@@ -48,6 +50,8 @@ class Member::ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    # Google Natural Language APIを使用
+    @review.score = Language.get_data(review_params[:impression])
     if @review.member.id == current_member.id
       if @review.update(review_params)
         flash[:notice] = "レビューを編集しました。"

@@ -24,13 +24,13 @@ class Member::MoviesController < ApplicationController
     @genres = Genre.where(is_active: true)
     render :index
   end
-  
+    #ヘッダーの検索フォーム
   def search
     @genres = Genre.where(is_active: true)
     @movies = Movie.search(params[:word]).page(params[:page]).per(9)
     render :index
   end
-  
+    #ソート機能
   def search2
     @genres = Genre.where(is_active: true)
     selection = params[:keyword]
